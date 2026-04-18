@@ -1,6 +1,7 @@
 import logo from "@/assets/logo.svg";
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import { InputGroup, InputGroupButton, InputGroupInput } from "@/components/ui/input-group";
 import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
@@ -17,7 +18,8 @@ export const Home = () => {
   const { data: quizData, isFetching: isGenerating } = useQuiz(articleData);
 
 
-  const handleSearch = () => {
+  const handleSearch = (e?: React.SubmitEvent) => {
+    e?.preventDefault();
     setQuery(input);
   };
 
@@ -28,7 +30,7 @@ export const Home = () => {
         <h1 className="text-6xl font-black">Quizpedia</h1>
       </span>
 
-      <form className="w-full flex items-end gap-5">
+      <form className="w-full flex items-end gap-5" onSubmit={handleSearch}>
         <Field>
           <span className="flex flex-col gap-2">
             <FieldLabel className="text-xl" htmlFor="input">
@@ -41,7 +43,7 @@ export const Home = () => {
                 onChange={(e) => setInput(e.target.value)}
               />
 
-              <InputGroupButton onClick={handleSearch}>
+              <InputGroupButton onClick={() => handleSearch()}>
                 {isSearching ? (
                   <Spinner /> 
                 ) : (
