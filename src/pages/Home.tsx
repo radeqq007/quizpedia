@@ -2,7 +2,11 @@ import logo from "@/assets/logo.svg";
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { InputGroup, InputGroupButton, InputGroupInput } from "@/components/ui/input-group";
+import {
+  InputGroup,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
 import { useQuiz } from "@/lib/quiz";
@@ -13,10 +17,12 @@ import { useState } from "react";
 export const Home = () => {
   const [input, setInput] = useState<string>("");
   const [query, setQuery] = useState<string>("");
-  const { data: searchData, isFetching: isSearching } = useWikipediaSearch(query);
-  const { data: articleData, isFetching } = useWikipediaArticle(searchData?.[1]?.[0])
+  const { data: searchData, isFetching: isSearching } =
+    useWikipediaSearch(query);
+  const { data: articleData, isFetching } = useWikipediaArticle(
+    searchData?.[1]?.[0],
+  );
   const { data: quizData, isFetching: isGenerating } = useQuiz(articleData);
-
 
   const handleSearch = (e?: React.SubmitEvent) => {
     e?.preventDefault();
@@ -44,11 +50,7 @@ export const Home = () => {
               />
 
               <InputGroupButton onClick={() => handleSearch()}>
-                {isSearching ? (
-                  <Spinner /> 
-                ) : (
-                  <LucideSearch />
-                )}
+                {isSearching ? <Spinner /> : <LucideSearch />}
               </InputGroupButton>
             </InputGroup>
           </span>
@@ -58,9 +60,7 @@ export const Home = () => {
       <div className="border border-input bg-transparent rounded-md px-6 py-4 w-full min-h-40 flex flex-col gap-3">
         <Label className="text-2xl font-bold">Summary</Label>
         <p className="text-primary">
-          {
-            isGenerating ? <Spinner /> : quizData?.summary
-          }
+          {isGenerating ? <Spinner /> : quizData?.summary}
         </p>
 
         <span className="w-full flex gap-2 justify-end mt-5">

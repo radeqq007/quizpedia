@@ -59,7 +59,7 @@ const fetchWikiArticle = async (title: string): Promise<Article> => {
   if (!res.ok) throw new Error("Failed to fetch article");
 
   const data = await res.json();
-  
+
   const pages = data.query.pages;
   const pageId = Object.keys(pages)[0];
   const page = pages[pageId];

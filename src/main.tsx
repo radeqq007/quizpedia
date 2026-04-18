@@ -11,8 +11,8 @@ const queryClient = new QueryClient({
       refetchOnMount: false,
       refetchOnReconnect: false,
       refetchInterval: false,
-    }
-  }
+    },
+  },
 });
 
 createRoot(document.getElementById("root")!).render(
@@ -20,5 +20,5 @@ createRoot(document.getElementById("root")!).render(
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>
-  </BrowserRouter>
+  </BrowserRouter>,
 );

@@ -5,14 +5,22 @@ export const Footer = () => {
         © 2026
         <span className="flex gap-1">
           Made with ❤ by
-          <a href="https://github.com/radeqq007" target="_blank" className="underline">
+          <a
+            href="https://github.com/radeqq007"
+            target="_blank"
+            className="underline"
+          >
             Radosław Kaczmarczyk
           </a>
         </span>
       </span>
 
       <span>
-        <a href="https://github.com/radeqq007/quizpedia" target="_blank" className="underline">
+        <a
+          href="https://github.com/radeqq007/quizpedia"
+          target="_blank"
+          className="underline"
+        >
           Github
         </a>
 
@@ -21,5 +29,5 @@ export const Footer = () => {
         </a>
       </span>
     </div>
-  )
-}
+  );
+};

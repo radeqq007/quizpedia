@@ -14,13 +14,12 @@ export type QuizData = {
   questions: Question[];
 };
 
-
 export function useQuiz(article?: Article): UseQueryResult<QuizData, Error> {
   return useQuery<QuizData>({
     queryKey: ["quiz", article?.title],
     queryFn: () => fetchQuiz(article!),
     enabled: !!article,
-  })
+  });
 }
 
 const fetchQuiz = async (article: Article) => {
@@ -36,5 +35,4 @@ const fetchQuiz = async (article: Article) => {
   if (!res.ok) throw new Error("Failed to generate quiz");
 
   return res.json();
-
-}
+};
