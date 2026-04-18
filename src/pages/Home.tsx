@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Spinner } from "@/components/ui/spinner";
 import { useQuiz } from "@/lib/quiz";
 import { useWikipediaArticle, useWikipediaSearch } from "@/lib/wikipedia";
 import { useState } from "react";
-import { Spinner } from "../ui/spinner";
 
 export const Home = () => {
   const [input, setInput] = useState<string>("");
