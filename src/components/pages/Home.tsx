@@ -1,15 +1,16 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useWikipediaSearch } from "@/lib/wikipedia";
+import { useWikipediaArticle, useWikipediaSearch } from "@/lib/wikipedia";
+import { useState } from "react";
 import { Spinner } from "../ui/spinner";
 
 export const Home = () => {
   const [input, setInput] = useState<string>("");
   const [query, setQuery] = useState<string>("");
-  const { data, isFetching } = useWikipediaSearch(query);
+  const { data: searchData, isFetching: isSearching } = useWikipediaSearch(query);
+  const { data: articleData, isFetching } = useWikipediaArticle(searchData?.[1]?.[0])
 
   const handleSearch = (e: React.SubmitEvent) => {
     e.preventDefault();
@@ -34,7 +35,7 @@ export const Home = () => {
           </span>
         </Field>
         <Button>
-          {isFetching ? (
+          {isSearching ? (
             <>
               <Spinner /> Searching...
             </>
@@ -47,10 +48,14 @@ export const Home = () => {
       <div className="border border-input bg-transparent rounded-md px-6 py-4 w-full min-h-40 flex flex-col gap-3">
         <Label className="text-2xl font-bold">Summary</Label>
         <p className="text-primary">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum
-          reprehenderit ratione ipsum neque, nulla consequatur tempora ab fugit
-          corrupti magnam facere rerum eum, cum expedita dolorum ducimus, atque
-          velit doloribus.
+          {
+            articleData?.content ? articleData.content : `
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum
+            reprehenderit ratione ipsum neque, nulla consequatur tempora ab fugit
+            corrupti magnam facere rerum eum, cum expedita dolorum ducimus, atque
+            velit doloribus.
+            `
+          }
         </p>
 
         <span className="w-full flex gap-2 justify-end mt-5">
