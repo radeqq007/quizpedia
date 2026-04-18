@@ -1,4 +1,4 @@
-import cat from '@/assets/cat.gif';
+import cat from "@/assets/cat.gif";
 
 export const NotFound = () => {
   return (

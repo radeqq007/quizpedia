@@ -1,14 +1,14 @@
-import { Button } from '@/components/ui/button';
-import { Field, FieldLabel } from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { useWikipediaSearch } from '@/lib/wikipedia';
-import { useState } from 'react';
-import { Spinner } from '../ui/spinner';
+import { Button } from "@/components/ui/button";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useWikipediaSearch } from "@/lib/wikipedia";
+import { useState } from "react";
+import { Spinner } from "../ui/spinner";
 
 export const Home = () => {
-  const [input, setInput] = useState<string>('');
-  const [query, setQuery] = useState<string>('');
+  const [input, setInput] = useState<string>("");
+  const [query, setQuery] = useState<string>("");
   const { data, isFetching } = useWikipediaSearch(query);
 
   const handleSearch = (e: React.SubmitEvent) => {
@@ -29,7 +29,7 @@ export const Home = () => {
             <Input
               id="input"
               placeholder="Ducks..."
-              onChange={e => setInput(e.target.value)}
+              onChange={(e) => setInput(e.target.value)}
             />
           </span>
         </Field>
@@ -39,7 +39,7 @@ export const Home = () => {
               <Spinner /> Searching...
             </>
           ) : (
-            'Search'
+            "Search"
           )}
         </Button>
       </form>
