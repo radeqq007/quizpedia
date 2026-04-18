@@ -1,11 +1,12 @@
 import logo from "@/assets/logo.svg";
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+import { InputGroup, InputGroupButton, InputGroupInput } from "@/components/ui/input-group";
 import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
 import { useQuiz } from "@/lib/quiz";
 import { useWikipediaArticle, useWikipediaSearch } from "@/lib/wikipedia";
+import { LucideSearch } from "lucide-react";
 import { useState } from "react";
 
 export const Home = () => {
@@ -16,8 +17,7 @@ export const Home = () => {
   const { data: quizData, isFetching: isGenerating } = useQuiz(articleData);
 
 
-  const handleSearch = (e: React.SubmitEvent) => {
-    e.preventDefault();
+  const handleSearch = () => {
     setQuery(input);
   };
 
@@ -28,28 +28,29 @@ export const Home = () => {
         <h1 className="text-6xl font-black">Quizpedia</h1>
       </span>
 
-      <form className="w-full flex items-end gap-5" onSubmit={handleSearch}>
+      <form className="w-full flex items-end gap-5">
         <Field>
           <span className="flex flex-col gap-2">
             <FieldLabel className="text-xl" htmlFor="input">
               I want a quiz about...
             </FieldLabel>
-            <Input
-              id="input"
-              placeholder="Ducks..."
-              onChange={(e) => setInput(e.target.value)}
-            />
+            <InputGroup>
+              <InputGroupInput
+                id="input"
+                placeholder="Ducks..."
+                onChange={(e) => setInput(e.target.value)}
+              />
+
+              <InputGroupButton onClick={handleSearch}>
+                {isSearching ? (
+                  <Spinner /> 
+                ) : (
+                  <LucideSearch />
+                )}
+              </InputGroupButton>
+            </InputGroup>
           </span>
         </Field>
-        <Button>
-          {isSearching ? (
-            <>
-              <Spinner /> Searching...
-            </>
-          ) : (
-            "Search"
-          )}
-        </Button>
       </form>
 
       <div className="border border-input bg-transparent rounded-md px-6 py-4 w-full min-h-40 flex flex-col gap-3">
