@@ -9,6 +9,7 @@ export const Footer = () => {
             href="https://github.com/radeqq007"
             target="_blank"
             className="underline"
+            rel="noopener"
           >
             Radosław Kaczmarczyk
           </a>
@@ -20,6 +21,7 @@ export const Footer = () => {
           href="https://github.com/radeqq007/quizpedia"
           target="_blank"
           className="underline"
+          rel="noopener"
         >
           Github
         </a>
