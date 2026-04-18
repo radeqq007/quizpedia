@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useQuiz } from "@/lib/quiz";
 import { useWikipediaArticle, useWikipediaSearch } from "@/lib/wikipedia";
 import { useState } from "react";
 import { Spinner } from "../ui/spinner";
@@ -12,6 +13,8 @@ export const Home = () => {
   const [query, setQuery] = useState<string>("");
   const { data: searchData, isFetching: isSearching } = useWikipediaSearch(query);
   const { data: articleData, isFetching } = useWikipediaArticle(searchData?.[1]?.[0])
+  const { data: quizData, isFetching: isGenerating } = useQuiz(articleData);
+
 
   const handleSearch = (e: React.SubmitEvent) => {
     e.preventDefault();
@@ -53,12 +56,7 @@ export const Home = () => {
         <Label className="text-2xl font-bold">Summary</Label>
         <p className="text-primary">
           {
-            articleData?.content ? articleData.content : `
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum
-            reprehenderit ratione ipsum neque, nulla consequatur tempora ab fugit
-            corrupti magnam facere rerum eum, cum expedita dolorum ducimus, atque
-            velit doloribus.
-            `
+            isGenerating ? <Spinner /> : quizData?.summary
           }
         </p>
 
