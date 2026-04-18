@@ -8,7 +8,7 @@ export type Article = {
   url: string;
 };
 
-export function useWikipediaSearch(query: any) {
+export function useWikipediaSearch(query: string) {
   return useQuery({
     queryKey: ["wikiSearch", query],
     queryFn: () => fetchWikiSearch(query),
