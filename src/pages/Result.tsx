@@ -1,4 +1,3 @@
-import logo from '@/assets/logo.svg';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { useQuizStore } from '@/lib/store';
@@ -23,12 +22,7 @@ export const Result = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-10 items-center w-1/3 m-auto h-screen p-8">
-        <span className="flex items-end gap-2">
-          <img src={logo} className="h-12" alt="logo" />
-          <h1 className="text-6xl font-black">Quizpedia</h1>
-        </span>
-
+      <div className="flex flex-col gap-10 items-center w-1/3 m-auto p-8">
         <div className="border border-input rounded-md px-6 py-4 w-full min-h-40 flex flex-col gap-10">
           <Label className="text-2xl font-bold">Result</Label>
           <div className="flex text-lg justify-between items-center w-full">

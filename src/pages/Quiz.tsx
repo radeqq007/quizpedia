@@ -18,12 +18,7 @@ export const Quiz = () => {
   if (!quiz || curQuestion >= quiz.questions.length) return null;
 
   return (
-    <div className="flex flex-col gap-18 items-center w-1/2 m-auto h-screen p-8">
-      <span className="flex items-end gap-2">
-        <img src={logo} className="h-12" alt="logo" />
-        <h1 className="text-6xl font-black">Quizpedia</h1>
-      </span>
-
+    <div className="flex flex-col gap-18 items-center w-1/2 m-auto p-8">
       <div className="border border-input rounded-md px-6 py-4 w-full min-h-40 flex flex-col gap-10">
         <h2 className="text-2xl font-semibold text-center">{quiz?.questions[curQuestion].question}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 justify-between gap-4">

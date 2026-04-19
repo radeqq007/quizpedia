@@ -50,12 +50,7 @@ export const Home = () => {
   };
 
   return (
-    <div className="flex flex-col gap-18 items-center w-1/3 m-auto h-screen p-8">
-      <span className="flex items-end gap-2">
-        <img src={logo} className="h-12" alt="logo" />
-        <h1 className="text-6xl font-black">Quizpedia</h1>
-      </span>
-
+    <div className="flex flex-col gap-18 items-center w-1/3 m-auto p-8">
       <form className="w-full flex items-end gap-5" onSubmit={handleSearch}>
         <Field>
           <span className="flex flex-col gap-2">
