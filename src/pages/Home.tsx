@@ -20,9 +20,7 @@ export const Home = () => {
   const [query, setQuery] = useState<string>("");
   const { data: searchData, isFetching: isSearching } =
     useWikipediaSearch(query);
-  const { data: articleData } = useWikipediaArticle(
-    searchData?.[1]?.[0],
-  );
+  const { data: articleData } = useWikipediaArticle(searchData?.[1]?.[0]);
   const {
     data: quizData,
     isFetching: isGenerating,
@@ -89,7 +87,8 @@ export const Home = () => {
           <Button variant="secondary">Expand</Button>
           <Button
             onClick={() => {
-              setQuiz(quizData!);
+              if (!quizData) return;
+              setQuiz(quizData);
               navigate("/quiz");
             }}
           >
