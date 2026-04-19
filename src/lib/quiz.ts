@@ -1,5 +1,5 @@
-import { type UseQueryResult, useQuery } from "@tanstack/react-query";
 import type { Article } from "@/lib/wikipedia";
+import { type UseQueryResult, useQuery } from "@tanstack/react-query";
 
 const WORKER_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -32,6 +32,7 @@ const fetchQuiz = async (article: Article) => {
     }),
   });
 
+  if (res.status === 429) throw new Error("rate_limited");
   if (!res.ok) throw new Error("Failed to generate quiz");
 
   return res.json();

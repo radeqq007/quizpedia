@@ -1,5 +1,3 @@
-import { LucideSearch } from "lucide-react";
-import { useState } from "react";
 import logo from "@/assets/logo.svg";
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
@@ -12,6 +10,8 @@ import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
 import { useQuiz } from "@/lib/quiz";
 import { useWikipediaArticle, useWikipediaSearch } from "@/lib/wikipedia";
+import { LucideSearch } from "lucide-react";
+import { useState } from "react";
 
 export const Home = () => {
   const [input, setInput] = useState<string>("");
@@ -21,7 +21,18 @@ export const Home = () => {
   const { data: articleData, isFetching } = useWikipediaArticle(
     searchData?.[1]?.[0],
   );
-  const { data: quizData, isFetching: isGenerating } = useQuiz(articleData);
+  const { data: quizData, isFetching: isGenerating, error: quizError } = useQuiz(articleData);
+
+  let summary;
+  if (isGenerating) {
+    summary = <Spinner />
+  } else if (quizError?.message === "rate_limited") {
+    summary = "Rate limit exceeded. Try again soon."
+  } else if (quizError) {
+    summary = "Internal server error."
+  } else {
+    summary = quizData?.summary
+  }
 
   const handleSearch = (e?: React.SubmitEvent) => {
     e?.preventDefault();
@@ -59,7 +70,7 @@ export const Home = () => {
       <div className="border border-input bg-transparent rounded-md px-6 py-4 w-full min-h-40 flex flex-col gap-3">
         <Label className="text-2xl font-bold">Summary</Label>
         <p className="text-primary">
-          {isGenerating ? <Spinner /> : quizData?.summary}
+          {summary}
         </p>
 
         <span className="w-full flex gap-2 justify-end mt-5">
