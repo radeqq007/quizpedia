@@ -1,4 +1,3 @@
-import logo from "@/assets/logo.svg";
 import { useQuizStore } from "@/lib/store";
 import clsx from "clsx";
 import { useEffect } from "react";

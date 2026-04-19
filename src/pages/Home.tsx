@@ -1,4 +1,3 @@
-import logo from "@/assets/logo.svg";
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
 import {
@@ -21,7 +20,7 @@ export const Home = () => {
   const [query, setQuery] = useState<string>("");
   const { data: searchData, isFetching: isSearching } =
     useWikipediaSearch(query);
-  const { data: articleData, isFetching } = useWikipediaArticle(
+  const { data: articleData } = useWikipediaArticle(
     searchData?.[1]?.[0],
   );
   const {
