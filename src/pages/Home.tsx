@@ -1,6 +1,3 @@
-import { LucideSearch } from "lucide-react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import logo from "@/assets/logo.svg";
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
@@ -15,6 +12,9 @@ import { Spinner } from "@/components/ui/spinner";
 import { useQuiz } from "@/lib/quiz";
 import { useQuizStore } from "@/lib/store";
 import { useWikipediaArticle, useWikipediaSearch } from "@/lib/wikipedia";
+import { LucideSearch } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const [input, setInput] = useState<string>("");
@@ -60,7 +60,7 @@ export const Home = () => {
   };
 
   return (
-    <div className="flex flex-col gap-18 items-center w-1/3 m-auto p-8">
+    <div className="flex flex-col gap-18 items-center w-full md:w-2/3 lg:w-1/3  m-auto p-8">
       <form className="w-full flex items-end gap-5" onSubmit={handleSearch}>
         <Field>
           <span className="flex flex-col gap-2">

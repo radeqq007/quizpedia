@@ -1,10 +1,10 @@
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { useQuizStore } from "@/lib/store";
 import clsx from "clsx";
 import { LucideArrowLeft } from "lucide-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { useQuizStore } from "@/lib/store";
 
 export const Result = () => {
   const { quiz, answers, reset } = useQuizStore();
@@ -22,7 +22,7 @@ export const Result = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-10 items-center w-1/3 m-auto p-8">
+      <div className="flex flex-col gap-10 items-center w-full lg:w-2/3 xl:w-1/3 m-auto p-8">
         <div className="border border-input rounded-md px-6 py-4 w-full min-h-40 flex flex-col gap-10">
           <Label className="text-2xl font-bold">Result</Label>
           <div className="flex text-lg justify-between items-center w-full">

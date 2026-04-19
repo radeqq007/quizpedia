@@ -1,8 +1,8 @@
+import logo from "@/assets/logo.svg";
+import { useQuizStore } from "@/lib/store";
 import clsx from "clsx";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "@/assets/logo.svg";
-import { useQuizStore } from "@/lib/store";
 
 export const Quiz = () => {
   const { quiz, curQuestion, selectAnswer, nextQuestion } = useQuizStore();
@@ -18,7 +18,7 @@ export const Quiz = () => {
   if (!quiz || curQuestion >= quiz.questions.length) return null;
 
   return (
-    <div className="flex flex-col gap-18 items-center w-1/2 m-auto p-8">
+    <div className="flex flex-col gap-18 items-center w-full lg:w-2/3 xl:w-1/3 m-auto p-8">
       <div className="border border-input rounded-md px-6 py-4 w-full min-h-40 flex flex-col gap-10">
         <h2 className="text-2xl font-semibold text-center">
           {quiz?.questions[curQuestion].question}

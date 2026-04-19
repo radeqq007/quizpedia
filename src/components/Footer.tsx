@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <div className="w-full h-10 py-10 px-4 text-secondary-foreground flex justify-between *:flex *:gap-4">
+    <div className="w-full h-10 py-10 px-4 text-secondary-foreground flex flex-col sm:flex-row items-center sm:justify-between *:flex *:gap-4">
       <span>
         © 2026
         <span className="flex gap-1">
