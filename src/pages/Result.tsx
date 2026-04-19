@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { useQuizStore } from "@/lib/store";
 import clsx from "clsx";
 import { LucideArrowLeft } from "lucide-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { useQuizStore } from "@/lib/store";
 
 export const Result = () => {
   const { quiz, answers, reset } = useQuizStore();

@@ -1,3 +1,6 @@
+import { LucideSearch } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "@/assets/logo.svg";
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
@@ -12,9 +15,6 @@ import { Spinner } from "@/components/ui/spinner";
 import { useQuiz } from "@/lib/quiz";
 import { useQuizStore } from "@/lib/store";
 import { useWikipediaArticle, useWikipediaSearch } from "@/lib/wikipedia";
-import { LucideSearch } from "lucide-react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const [input, setInput] = useState<string>("");

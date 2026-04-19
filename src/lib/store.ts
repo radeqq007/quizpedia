@@ -1,5 +1,5 @@
-import type { QuizData } from "@/lib/quiz";
 import { create } from "zustand";
+import type { QuizData } from "@/lib/quiz";
 
 type QuizStore = {
   quiz: QuizData | null;
