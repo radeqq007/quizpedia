@@ -8,8 +8,14 @@ export const Quiz = () => {
   const { quiz, curQuestion, selectAnswer, nextQuestion } = useQuizStore();
   const navigate = useNavigate();
   useEffect(() => {
-    if (!quiz) navigate("/");
-  })
+    if (!quiz) {
+      navigate("/");
+      return;
+    }
+    if (curQuestion >= quiz!.questions.length) navigate("/result")
+  }, [quiz, curQuestion, navigate])
+  
+  if (!quiz || curQuestion >= quiz.questions.length) return null;
 
   return (
     <div className="flex flex-col gap-18 items-center w-1/2 m-auto h-screen p-8">
@@ -23,7 +29,7 @@ export const Quiz = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 justify-between gap-4">
           {
             quiz?.questions[curQuestion].options.map((option, idx) => (
-              <div key={idx} className="h-12 text-xl flex justify-start items-center group" onClick={() => { selectAnswer(idx, option); nextQuestion()}}>
+              <div key={idx} className="h-12 text-xl flex justify-start items-center group" onClick={() => { selectAnswer(curQuestion, option); nextQuestion()}}>
                 <span className="bg-primary text-primary-foreground font-bold text-2xl h-full aspect-square flex items-center justify-center rounded-l-lg">
                   {["A", "B", "C", "D"][idx]}
                 </span>
