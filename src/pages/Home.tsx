@@ -7,6 +7,7 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group";
 import { Label } from "@/components/ui/label";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Spinner } from "@/components/ui/spinner";
 import { useQuiz } from "@/lib/quiz";
 import { useWikipediaArticle, useWikipediaSearch } from "@/lib/wikipedia";
@@ -25,7 +26,12 @@ export const Home = () => {
 
   let summary;
   if (isGenerating) {
-    summary = <Spinner />
+    summary = <div className="flex w-full flex-col gap-2">
+      <Skeleton className="h-3 w-full" />
+      <Skeleton className="h-3 w-full" />
+      <Skeleton className="h-3 w-full" />
+      <Skeleton className="h-3 w-3/4" />
+    </div>
   } else if (quizError?.message === "rate_limited") {
     summary = "Rate limit exceeded. Try again soon."
   } else if (quizError) {
