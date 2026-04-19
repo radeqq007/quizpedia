@@ -82,6 +82,10 @@ export const Home = () => {
     "Pink Floyd",
     "Metallica",
     "Angine de Poitrine",
+    "Weezer",
+    "Black Sabbath",
+    "Bocchi the Rock",
+    "88Kasyo Junrei",
   ];
 
   return (
