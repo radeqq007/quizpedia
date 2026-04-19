@@ -33,9 +33,9 @@ export const Home = () => {
       <Skeleton className="h-3 w-3/4" />
     </div>
   } else if (quizError?.message === "rate_limited") {
-    summary = "Rate limit exceeded. Try again soon."
+    summary = <p className="text-primary-foreground">Rate limit exceeded. Try again soon.</p>
   } else if (quizError) {
-    summary = "Internal server error."
+    summary = <p className="text-primary-foreground">Internal server error.</p>
   } else {
     summary = quizData?.summary
   }
@@ -75,9 +75,7 @@ export const Home = () => {
 
       <div className="border border-input bg-transparent rounded-md px-6 py-4 w-full min-h-40 flex flex-col gap-3">
         <Label className="text-2xl font-bold">Summary</Label>
-        <p className="text-primary">
-          {summary}
-        </p>
+        {summary}
 
         <span className="w-full flex gap-2 justify-end mt-5">
           <Button variant="secondary">Expand</Button>
