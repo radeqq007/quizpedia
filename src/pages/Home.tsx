@@ -56,6 +56,34 @@ export const Home = () => {
     setQuery(input);
   };
 
+  const placeholders: string[] = [
+    "Ducks",
+    "Radiohead",
+    "The smashing pumpkins",
+    "Cats",
+    "Edam cheese",
+    "Earth",
+    "Van Halen",
+    "Linus Torvalds",
+    "Linux kernel",
+    "Jimi Hendrix",
+    "Minecraft",
+    "Time travel",
+    "Quantum physics",
+    "Roman empire",
+    "Area 51",
+    "Evolution",
+    "Vikings",
+    "Game development",
+    "Artificial intelligence",
+    "Black holes",
+    "X Japan",
+    "Neon Genesis Evangelion",
+    "Pink Floyd",
+    "Metallica",
+    "Angine de Poitrine",
+  ];
+
   return (
     <div className="flex flex-col gap-18 items-center w-full md:w-2/3 lg:w-1/3  m-auto p-8">
       <form className="w-full flex items-end gap-5" onSubmit={handleSearch}>
@@ -67,7 +95,7 @@ export const Home = () => {
             <InputGroup>
               <InputGroupInput
                 id="input"
-                placeholder="Ducks..."
+                placeholder={`${placeholders[Math.floor(Math.random() * placeholders.length)]}...`}
                 onChange={(e) => setInput(e.target.value)}
               />
 
