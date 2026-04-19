@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <div className="absolute bottom-0 left-0 right-0 h-10 py-10 px-4 text-secondary-foreground flex justify-between gap-6 *:flex *:gap-4">
+    <div className="w-full h-10 py-10 px-4 text-secondary-foreground flex justify-between *:flex *:gap-4">
       <span>
         © 2026
         <span className="flex gap-1">

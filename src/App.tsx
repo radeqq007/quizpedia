@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="flex flex-col items-center gap-10">
+    <div className="flex flex-col justify-between items-center gap-10 h-screen max-w-screen">
       <Header />
 
       <Routes>
