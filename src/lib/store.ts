@@ -9,14 +9,17 @@ type QuizStore = {
   selectAnswer: (idx: number, answer: string) => void;
   nextQuestion: () => void;
   reset: () => void;
-}
+};
 
-export const useQuizStore = create<QuizStore>((set): QuizStore => ({
-  quiz: null,
-  curQuestion: 0,
-  answers: {},
-  setQuiz: (quiz) => set({ quiz, curQuestion: 0, answers: {} }),
-  selectAnswer: (index, answer) => set((s) => ({ answers: { ...s.answers, [index]: answer } })),
-  nextQuestion: () => set((s) => ({ curQuestion: s.curQuestion + 1 })),
-  reset: () => set({ quiz: null, curQuestion: 0, answers: {} }),
-}));
+export const useQuizStore = create<QuizStore>(
+  (set): QuizStore => ({
+    quiz: null,
+    curQuestion: 0,
+    answers: {},
+    setQuiz: (quiz) => set({ quiz, curQuestion: 0, answers: {} }),
+    selectAnswer: (index, answer) =>
+      set((s) => ({ answers: { ...s.answers, [index]: answer } })),
+    nextQuestion: () => set((s) => ({ curQuestion: s.curQuestion + 1 })),
+    reset: () => set({ quiz: null, curQuestion: 0, answers: {} }),
+  }),
+);

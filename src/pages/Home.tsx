@@ -24,24 +24,34 @@ export const Home = () => {
   const { data: articleData, isFetching } = useWikipediaArticle(
     searchData?.[1]?.[0],
   );
-  const { data: quizData, isFetching: isGenerating, error: quizError } = useQuiz(articleData);
+  const {
+    data: quizData,
+    isFetching: isGenerating,
+    error: quizError,
+  } = useQuiz(articleData);
   const navigate = useNavigate();
-  const setQuiz = useQuizStore(s => s.setQuiz);
+  const setQuiz = useQuizStore((s) => s.setQuiz);
 
   let summary;
   if (isGenerating) {
-    summary = <div className="flex w-full flex-col gap-2">
-      <Skeleton className="h-3 w-full" />
-      <Skeleton className="h-3 w-full" />
-      <Skeleton className="h-3 w-full" />
-      <Skeleton className="h-3 w-3/4" />
-    </div>
+    summary = (
+      <div className="flex w-full flex-col gap-2">
+        <Skeleton className="h-3 w-full" />
+        <Skeleton className="h-3 w-full" />
+        <Skeleton className="h-3 w-full" />
+        <Skeleton className="h-3 w-3/4" />
+      </div>
+    );
   } else if (quizError?.message === "rate_limited") {
-    summary = <p className="text-primary-foreground">Rate limit exceeded. Try again soon.</p>
+    summary = (
+      <p className="text-primary-foreground">
+        Rate limit exceeded. Try again soon.
+      </p>
+    );
   } else if (quizError) {
-    summary = <p className="text-primary-foreground">Internal server error.</p>
+    summary = <p className="text-primary-foreground">Internal server error.</p>;
   } else {
-    summary = quizData?.summary
+    summary = quizData?.summary;
   }
 
   const handleSearch = (e?: React.SubmitEvent) => {
@@ -78,7 +88,14 @@ export const Home = () => {
 
         <span className="w-full flex gap-2 justify-end mt-5">
           <Button variant="secondary">Expand</Button>
-          <Button onClick={() => { setQuiz(quizData!); navigate("/quiz"); }}>Start</Button>
+          <Button
+            onClick={() => {
+              setQuiz(quizData!);
+              navigate("/quiz");
+            }}
+          >
+            Start
+          </Button>
         </span>
       </div>
     </div>
