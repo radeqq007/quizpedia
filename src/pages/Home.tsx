@@ -10,9 +10,11 @@ import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Spinner } from "@/components/ui/spinner";
 import { useQuiz } from "@/lib/quiz";
+import { useQuizStore } from "@/lib/store";
 import { useWikipediaArticle, useWikipediaSearch } from "@/lib/wikipedia";
 import { LucideSearch } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const [input, setInput] = useState<string>("");
@@ -23,6 +25,8 @@ export const Home = () => {
     searchData?.[1]?.[0],
   );
   const { data: quizData, isFetching: isGenerating, error: quizError } = useQuiz(articleData);
+  const navigate = useNavigate();
+  const setQuiz = useQuizStore(s => s.setQuiz);
 
   let summary;
   if (isGenerating) {
@@ -79,7 +83,7 @@ export const Home = () => {
 
         <span className="w-full flex gap-2 justify-end mt-5">
           <Button variant="secondary">Expand</Button>
-          <Button>Start</Button>
+          <Button onClick={() => { setQuiz(quizData!); navigate("/quiz"); }}>Start</Button>
         </span>
       </div>
     </div>
