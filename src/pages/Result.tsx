@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { useQuizStore } from "@/lib/store";
 import clsx from "clsx";
 import { LucideArrowLeft } from "lucide-react";
+import { motion } from "motion/react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
@@ -88,7 +89,11 @@ export const Result = () => {
           </div>
         </div>
         {quiz?.questions.map((q, i) => (
-          <div
+          <motion.div
+            initial={{opacity: 0, y: 10}}
+            whileInView={{opacity: 1, y: 0}}
+            transition={{delay: 0.09}}
+            viewport={{once: true}}
             key={i}
             className="border border-input rounded-md px-6 py-4 w-full flex flex-col gap-2"
           >
@@ -112,7 +117,7 @@ export const Result = () => {
                 </span>
               ))}
             </span>
-          </div>
+          </motion.div>
         ))}
         <Button
           size="lg"
