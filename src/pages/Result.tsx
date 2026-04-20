@@ -90,10 +90,10 @@ export const Result = () => {
         </div>
         {quiz?.questions.map((q, i) => (
           <motion.div
-            initial={{opacity: 0, y: 10}}
-            whileInView={{opacity: 1, y: 0}}
-            transition={{delay: 0.09}}
-            viewport={{once: true}}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.09 }}
+            viewport={{ once: true }}
             key={i}
             className="border border-input rounded-md px-6 py-4 w-full flex flex-col gap-2"
           >
