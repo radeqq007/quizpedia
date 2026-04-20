@@ -31,7 +31,7 @@ const fetchWikiSearch = async (query: string) => {
 
   url.searchParams.set("action", "opensearch");
   url.searchParams.set("search", query.trim());
-  url.searchParams.set("limit", "0");
+  url.searchParams.set("limit", "6");
   url.searchParams.set("origin", "*");
   url.searchParams.set("format", "json");
 
