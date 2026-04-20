@@ -1,11 +1,4 @@
 import { Button } from '@/components/ui/button';
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandItem,
-  CommandList,
-} from '@/components/ui/command';
 import { Field, FieldLabel } from '@/components/ui/field';
 import {
   InputGroup,
@@ -24,6 +17,7 @@ import { useQuiz } from '@/lib/quiz';
 import { useQuizStore } from '@/lib/store';
 import { useWikipediaArticle, useWikipediaSearch } from '@/lib/wikipedia';
 import { LucideSearch } from 'lucide-react';
+import { AnimatePresence } from 'motion/react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -141,16 +135,13 @@ export const Home = () => {
               </PopoverAnchor>
 
               <PopoverContent className="p-0 mt-0 w-(--radix-popover-trigger-width)">
-                <Command className="w-full h-full m-0">
-                  <CommandEmpty>No results found.</CommandEmpty>
-                  <CommandGroup>
-                    <CommandList>
+                <AnimatePresence>
+                  <div className='w-full flex flex-col rounded-lg px-1 py-2'>
                       {searchResults?.map(result => (
-                        <CommandItem className='my-1' value={result} key={result} onSelect={() => handleSelect(result)}>{result}</CommandItem>
+                        <button className='my-1 cursor-pointer hover:bg-input h-8 px-3 rounded-lg text-left transition-colors' key={result} onClick={() => handleSelect(result)}>{result}</button>
                       ))}
-                    </CommandList>
-                  </CommandGroup>
-                </Command>
+                  </div>
+                </AnimatePresence>
               </PopoverContent>
             </Popover>
           </span>
