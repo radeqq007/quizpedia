@@ -149,16 +149,25 @@ export const Home = () => {
                 className="p-0 mt-0 w-(--radix-popover-trigger-width)"
               >
                 <AnimatePresence mode="wait">
-                  <motion.div initial={{opacity: 0, y: -5}} animate={{opacity: 1, y: 0}} transition={{duration: 0.1}} className="w-full flex flex-col rounded-lg px-1 py-2">
-                    {searchResults && searchResults.length > 0 ? searchResults?.map((result) => (
-                      <button
-                      className="my-1 cursor-pointer hover:bg-input h-8 px-3 rounded-lg text-left transition-colors"
-                      key={result}
-                      onClick={() => handleSelect(result)}
-                      >
-                        {result}
-                      </button>
-                    )) : <span className="w-full text-center">No results.</span> }
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.1 }}
+                    className="w-full flex flex-col rounded-lg px-1 py-2"
+                  >
+                    {searchResults && searchResults.length > 0 ? (
+                      searchResults?.map((result) => (
+                        <button
+                          className="my-1 cursor-pointer hover:bg-input h-8 px-3 rounded-lg text-left transition-colors"
+                          key={result}
+                          onClick={() => handleSelect(result)}
+                        >
+                          {result}
+                        </button>
+                      ))
+                    ) : (
+                      <span className="w-full text-center">No results.</span>
+                    )}
                   </motion.div>
                 </AnimatePresence>
               </PopoverContent>
