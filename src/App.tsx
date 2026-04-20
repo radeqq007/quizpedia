@@ -17,10 +17,42 @@ function App() {
 
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<PageTransition> <Home /> </PageTransition>} />
-          <Route path="/quiz" element={<PageTransition> <Quiz /> </PageTransition>} />
-          <Route path="/result" element={<PageTransition> <Result /> </PageTransition>} />
-          <Route path="*" element={<PageTransition> <NotFound /> </PageTransition>} />
+          <Route
+            path="/"
+            element={
+              <PageTransition>
+                {" "}
+                <Home />{" "}
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/quiz"
+            element={
+              <PageTransition>
+                {" "}
+                <Quiz />{" "}
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/result"
+            element={
+              <PageTransition>
+                {" "}
+                <Result />{" "}
+              </PageTransition>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <PageTransition>
+                {" "}
+                <NotFound />{" "}
+              </PageTransition>
+            }
+          />
         </Routes>
       </AnimatePresence>
 
