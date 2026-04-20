@@ -59,10 +59,21 @@ export const Quiz = () => {
               <span
                 key={idx}
                 className={clsx(
-                  'h-4 aspect-square rounded-full',
-                  idx <= curQuestion ? 'bg-primary' : 'bg-primary/50',
+                  'relative overflow-clip h-4 aspect-square rounded-full bg-primary/50',
                 )}
-              ></span>
+              >
+                <motion.div
+                  initial={false}
+                  animate={{ 
+                    width: idx <= curQuestion ? '100%' : '0%' 
+                  }}
+                  transition={{ 
+                    duration: 0.1, 
+                    ease: "easeInOut" 
+                  }}
+                  className="absolute inset-0 bg-primary"
+                />
+              </span>
             ))}
           </div>
     </div>
