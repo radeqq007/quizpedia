@@ -48,7 +48,7 @@ export const Result = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-10 items-center w-full lg:w-2/3 xl:w-1/3 m-auto p-8">
+      <div className="flex flex-col gap-10 items-center w-full lg:w-2/3 xl:w-1/3 lg:min-w-150 m-auto p-8">
         <div className="border border-input rounded-md px-6 py-4 w-full min-h-40 flex flex-col gap-10">
           <Label className="text-2xl font-bold">Result</Label>
           <ChartContainer config={chartConfig} className="h-40 w-full">

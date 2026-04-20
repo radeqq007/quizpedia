@@ -18,7 +18,7 @@ export const Quiz = () => {
   if (!quiz || curQuestion >= quiz.questions.length) return null;
 
   return (
-    <div className="flex flex-col gap-10 items-center w-full lg:w-2/3 xl:w-1/3 m-auto p-8">
+    <div className="flex flex-col gap-10 items-center w-full lg:w-2/3 xl:w-1/3 lg:min-w-150 m-auto p-8">
       <AnimatePresence mode="wait">
         <motion.div
           key={curQuestion}

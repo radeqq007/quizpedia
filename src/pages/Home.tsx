@@ -89,7 +89,7 @@ export const Home = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-18 items-center w-full md:w-2/3 lg:w-1/3  m-auto p-8">
+    <div className="flex flex-col gap-18 items-center w-full md:w-2/3 lg:w-1/3 lg:min-w-140 m-auto p-8">
       <form className="w-full flex items-end gap-5" onSubmit={handleSearch}>
         <Field>
           <span className="flex flex-col gap-2">
