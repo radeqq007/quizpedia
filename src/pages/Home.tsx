@@ -17,6 +17,7 @@ import { useQuiz } from "@/lib/quiz";
 import { useQuizStore } from "@/lib/store";
 import { useWikipediaArticle, useWikipediaSearch } from "@/lib/wikipedia";
 import { LucideSearch } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -146,17 +147,19 @@ export const Home = () => {
                 onOpenAutoFocus={(e) => e.preventDefault()}
                 className="p-0 mt-0 w-(--radix-popover-trigger-width)"
               >
-                <div className="w-full flex flex-col rounded-lg px-1 py-2">
-                  {searchResults?.map((result) => (
-                    <button
+                <AnimatePresence mode="wait">
+                  <motion.div initial={{opacity: 0, y: -5}} animate={{opacity: 1, y: 0}} transition={{duration: 0.1}} className="w-full flex flex-col rounded-lg px-1 py-2">
+                    {searchResults?.map((result) => (
+                      <button
                       className="my-1 cursor-pointer hover:bg-input h-8 px-3 rounded-lg text-left transition-colors"
                       key={result}
                       onClick={() => handleSelect(result)}
-                    >
-                      {result}
-                    </button>
-                  ))}
-                </div>
+                      >
+                        {result}
+                      </button>
+                    ))}
+                  </motion.div>
+                </AnimatePresence>
               </PopoverContent>
             </Popover>
           </span>
