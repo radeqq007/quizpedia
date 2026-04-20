@@ -17,7 +17,6 @@ import { useQuiz } from '@/lib/quiz';
 import { useQuizStore } from '@/lib/store';
 import { useWikipediaArticle, useWikipediaSearch } from '@/lib/wikipedia';
 import { LucideSearch } from 'lucide-react';
-import { AnimatePresence } from 'motion/react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -37,6 +36,8 @@ export const Home = () => {
 
   const navigate = useNavigate();
   const setQuiz = useQuizStore(s => s.setQuiz);
+
+  const [searchOpen, setSearchOpen] = useState<boolean>(false);
 
   let summary;
   if (isGenerating) {
@@ -66,8 +67,15 @@ export const Home = () => {
   };
 
   useEffect(() => {
+    if (!input) {
+      setSearchOpen(false);
+      setQuery('');
+      return;
+    }
+
     const delay = setTimeout(() => {
       setQuery(input);
+      setSearchOpen(true);
     }, 500);
 
     return () => clearTimeout(delay);
@@ -116,7 +124,7 @@ export const Home = () => {
             <FieldLabel className="text-xl" htmlFor="input">
               I want a quiz about...
             </FieldLabel>
-            <Popover open={Boolean(query)}>
+            <Popover open={searchOpen} onOpenChange={setSearchOpen}>
               <PopoverAnchor asChild>
                 <InputGroup>
                   <InputGroupInput
@@ -134,14 +142,12 @@ export const Home = () => {
                 </InputGroup>
               </PopoverAnchor>
 
-              <PopoverContent className="p-0 mt-0 w-(--radix-popover-trigger-width)">
-                <AnimatePresence>
-                  <div className='w-full flex flex-col rounded-lg px-1 py-2'>
-                      {searchResults?.map(result => (
-                        <button className='my-1 cursor-pointer hover:bg-input h-8 px-3 rounded-lg text-left transition-colors' key={result} onClick={() => handleSelect(result)}>{result}</button>
-                      ))}
-                  </div>
-                </AnimatePresence>
+              <PopoverContent onOpenAutoFocus={e => e.preventDefault()} className="p-0 mt-0 w-(--radix-popover-trigger-width)">
+                <div className='w-full flex flex-col rounded-lg px-1 py-2'>
+                    {searchResults?.map(result => (
+                      <button className='my-1 cursor-pointer hover:bg-input h-8 px-3 rounded-lg text-left transition-colors' key={result} onClick={() => handleSelect(result)}>{result}</button>
+                    ))}
+                </div>
               </PopoverContent>
             </Popover>
           </span>
