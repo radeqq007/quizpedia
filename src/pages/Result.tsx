@@ -64,7 +64,7 @@ export const Result = () => {
               <ChartTooltip
                 content={
                   <ChartTooltipContent
-                    formatter={(value) => [`${value}%`, "Score"]}
+                    formatter={(value) => [`${value}%`, " Score"]}
                   />
                 }
               />
