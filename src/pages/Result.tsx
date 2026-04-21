@@ -5,7 +5,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { Label } from "@/components/ui/label";
 import { useQuizStore } from "@/lib/store";
 import clsx from "clsx";
 import { LucideArrowLeft } from "lucide-react";
