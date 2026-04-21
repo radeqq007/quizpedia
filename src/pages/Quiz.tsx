@@ -21,10 +21,14 @@ export const Quiz = () => {
 
       const options = quiz.questions[curQuestion].options;
       const keyMap: Record<string, number> = {
-        "1": 0, a: 0,
-        "2": 1, b: 1,
-        "3": 2, c: 2,
-        "4": 3, d: 3,
+        "1": 0,
+        a: 0,
+        "2": 1,
+        b: 1,
+        "3": 2,
+        c: 2,
+        "4": 3,
+        d: 3,
       };
 
       const idx = keyMap[e.key.toLowerCase()];
@@ -33,7 +37,7 @@ export const Quiz = () => {
 
       selectAnswer(curQuestion, options[idx]);
       nextQuestion();
-    }
+    };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);

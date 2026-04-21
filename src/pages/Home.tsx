@@ -6,6 +6,7 @@ import { useQuiz } from "@/lib/quiz";
 import { useQuizStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import { useWikipediaArticle } from "@/lib/wikipedia";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -48,23 +49,35 @@ export const Home = () => {
     <div className="flex flex-col gap-8 items-center w-full md:w-2/3 lg:w-1/3 lg:min-w-140 m-auto p-8">
       <SearchBar selected={selected} onSelect={setSelected} />
 
-      <div className={cn("border border-input bg-transparent rounded-md px-6 py-4 w-full min-h-40 flex flex-col justify-between gap-3", !selected && "hidden" )}>
-        <Label className="text-2xl font-bold">Summary</Label>
-        {summary}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={selected ? "box" : "empty"}
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          layout
+          className={cn(
+            "border border-input bg-transparent rounded-md px-6 py-4 w-full min-h-40 flex flex-col justify-between gap-3",
+            !selected && "hidden",
+          )}
+        >
+          <Label className="text-2xl font-bold">Summary</Label>
+          {summary}
 
-        <span className="w-full flex gap-2 justify-end mt-5">
-          <Button variant="secondary">Expand</Button>
-          <Button
-            onClick={() => {
-              if (!quizData) return;
-              setQuiz(quizData);
-              navigate("/quiz");
-            }}
-          >
-            Start
-          </Button>
-        </span>
-      </div>
+          <span className="w-full flex gap-2 justify-end mt-5">
+            <Button variant="secondary">Expand</Button>
+            <Button
+              onClick={() => {
+                if (!quizData) return;
+                setQuiz(quizData);
+                navigate("/quiz");
+              }}
+            >
+              Start
+            </Button>
+          </span>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };
