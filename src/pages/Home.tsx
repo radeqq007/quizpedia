@@ -64,6 +64,7 @@ export const Home = () => {
 
   const handleSelect = (value: string, e?: React.SubmitEvent) => {
     e?.preventDefault();
+    if (searchResults.length === 0) return;
     setSelected(value);
     setSearchOpen(false);
   };
