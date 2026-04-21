@@ -157,9 +157,9 @@ export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
                         {result}
                       </button>
                     ))
-                  ) : (
+                  ) : !isSearching ? (
                     <span className="w-full text-center">No results.</span>
-                  )}
+                  ) : null}
                 </motion.div>
               </AnimatePresence>
             </PopoverContent>
