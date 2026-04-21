@@ -11,6 +11,7 @@ import {
   PopoverContent,
 } from "@/components/ui/popover";
 import { Spinner } from "@/components/ui/spinner";
+import { exampleTopics } from "@/constants/constants";
 import { cn } from "@/lib/utils";
 import { useWikipediaSearch } from "@/lib/wikipedia";
 import { LucideSearch } from "lucide-react";
@@ -21,38 +22,6 @@ interface SearchBarProps {
   selected: string;
   onSelect: (value: string) => void;
 }
-
-const placeholders: string[] = [
-  "Ducks",
-  "Radiohead",
-  "The smashing pumpkins",
-  "Cats",
-  "Edam cheese",
-  "Earth",
-  "Van Halen",
-  "Linus Torvalds",
-  "Linux kernel",
-  "Jimi Hendrix",
-  "Minecraft",
-  "Time travel",
-  "Quantum physics",
-  "Roman empire",
-  "Area 51",
-  "Evolution",
-  "Vikings",
-  "Game development",
-  "Artificial intelligence",
-  "Black holes",
-  "X Japan",
-  "Neon Genesis Evangelion",
-  "Pink Floyd",
-  "Metallica",
-  "Angine de Poitrine",
-  "Weezer",
-  "Black Sabbath",
-  "Bocchi the Rock",
-  "88Kasyo Junrei",
-];
 
 export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
   const [input, setInput] = useState<string>("");
@@ -100,8 +69,8 @@ export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
     const uniqueSuggestions = new Set<string>();
 
     while (uniqueSuggestions.size < 4) {
-      const randomIndex = Math.floor(Math.random() * placeholders.length);
-      uniqueSuggestions.add(placeholders[randomIndex]);
+      const randomIndex = Math.floor(Math.random() * exampleTopics.length);
+      uniqueSuggestions.add(exampleTopics[randomIndex]);
     }
 
     setSuggestions(Array.from(uniqueSuggestions));
@@ -125,7 +94,7 @@ export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
                   <InputGroupInput
                     id="input"
                     autoComplete="off"
-                    placeholder={`${placeholders[Math.floor(Math.random() * placeholders.length)]}...`}
+                    placeholder={`${exampleTopics[Math.floor(Math.random() * exampleTopics.length)]}...`}
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                   />
