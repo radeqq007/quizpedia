@@ -6,7 +6,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { useQuizStore } from "@/lib/store";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import { LucideArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect } from "react";
@@ -101,7 +101,7 @@ export const Result = () => {
           <span className="flex flex-col gap-2">
             {q.options.map((opt) => (
               <span
-                className={clsx(
+                className={cn(
                   "border px-4 py-2 rounded-lg",
                   quiz.questions[i].answer === opt &&
                     "border-green-400 bg-green-400/30",
