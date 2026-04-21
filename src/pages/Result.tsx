@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import {
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-  type ChartConfig,
 } from "@/components/ui/chart";
 import { Label } from "@/components/ui/label";
 import { useQuizStore } from "@/lib/store";
@@ -94,7 +94,7 @@ export const Result = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.09 }}
             viewport={{ once: true }}
-            key={i}
+            key={q.question}
             className="border border-input rounded-md px-6 py-4 w-full flex flex-col gap-2"
           >
             <h3 className="text-xl font-bold">
@@ -111,7 +111,7 @@ export const Result = () => {
                       quiz.questions[i].answer !== opt &&
                       "border-red-600/75 bg-red-700/30",
                   )}
-                  key={j}
+                  key={opt}
                 >
                   {opt}
                 </span>

@@ -1,8 +1,8 @@
-import { useQuizStore } from "@/lib/store";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useQuizStore } from "@/lib/store";
 
 export const Quiz = () => {
   const { quiz, curQuestion, selectAnswer, nextQuestion } = useQuizStore();

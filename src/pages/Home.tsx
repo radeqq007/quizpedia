@@ -7,7 +7,7 @@ import { useQuizStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import { useWikipediaArticle } from "@/lib/wikipedia";
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { useState, type ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
@@ -22,7 +22,7 @@ export const Home = () => {
   const navigate = useNavigate();
   const setQuiz = useQuizStore((s) => s.setQuiz);
 
-  let summary;
+  let summary: ReactElement;
   if (isGenerating || isFetching) {
     summary = (
       <div className="flex w-full flex-col gap-2">
@@ -42,7 +42,7 @@ export const Home = () => {
   } else if (quizError) {
     summary = <p className="text-primary-foreground">Internal server error.</p>;
   } else {
-    summary = quizData?.summary;
+    summary = <span>quizData?.summary</span>;
   }
 
   return (

@@ -1,3 +1,6 @@
+import { LucideSearch } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
 import { Field, FieldLabel } from "@/components/ui/field";
 import {
   InputGroup,
@@ -11,9 +14,6 @@ import {
 } from "@/components/ui/popover";
 import { Spinner } from "@/components/ui/spinner";
 import { useWikipediaSearch } from "@/lib/wikipedia";
-import { LucideSearch } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
 
 interface SearchBarProps {
   selected: string;
