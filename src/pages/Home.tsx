@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useQuiz } from "@/lib/quiz";
 import { useQuizStore } from "@/lib/store";
+import { cn } from "@/lib/utils";
 import { useWikipediaArticle } from "@/lib/wikipedia";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -44,10 +45,10 @@ export const Home = () => {
   }
 
   return (
-    <div className="flex flex-col gap-18 items-center w-full md:w-2/3 lg:w-1/3 lg:min-w-140 m-auto p-8">
+    <div className="flex flex-col gap-8 items-center w-full md:w-2/3 lg:w-1/3 lg:min-w-140 m-auto p-8">
       <SearchBar selected={selected} onSelect={setSelected} />
 
-      <div className="border border-input bg-transparent rounded-md px-6 py-4 w-full min-h-40 flex flex-col justify-between gap-3">
+      <div className={cn("border border-input bg-transparent rounded-md px-6 py-4 w-full min-h-40 flex flex-col justify-between gap-3", !selected && "hidden" )}>
         <Label className="text-2xl font-bold">Summary</Label>
         {summary}
 
