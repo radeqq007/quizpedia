@@ -1,4 +1,4 @@
-import { useQuizStore } from "@/components/hooks/store";
+import { useQuizStore } from "@/hooks/store";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect } from "react";

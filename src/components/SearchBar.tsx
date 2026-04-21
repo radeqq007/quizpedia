@@ -1,4 +1,3 @@
-import { useWikipediaSearch } from "@/components/hooks/wikipedia";
 import { Field, FieldLabel } from "@/components/ui/field";
 import {
   InputGroup,
@@ -12,6 +11,7 @@ import {
 } from "@/components/ui/popover";
 import { Spinner } from "@/components/ui/spinner";
 import { exampleTopics } from "@/constants/constants";
+import { useWikipediaSearch } from "@/hooks/wikipedia";
 import { cn } from "@/lib/utils";
 import { LucideSearch } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";

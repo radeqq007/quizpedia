@@ -1,9 +1,9 @@
-import { useQuiz } from "@/components/hooks/quiz";
-import { useQuizStore } from "@/components/hooks/store";
-import { useWikipediaArticle } from "@/components/hooks/wikipedia";
 import { SearchBar } from "@/components/SearchBar";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useQuiz } from "@/hooks/quiz";
+import { useQuizStore } from "@/hooks/store";
+import { useWikipediaArticle } from "@/hooks/wikipedia";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import { type ReactElement, useState } from "react";

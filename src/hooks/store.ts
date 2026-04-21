@@ -1,4 +1,4 @@
-import type { QuizData } from "@/components/hooks/quiz";
+import type { QuizData } from "@/hooks/quiz";
 import { create } from "zustand";
 
 type QuizStore = {

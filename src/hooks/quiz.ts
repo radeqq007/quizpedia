@@ -1,4 +1,4 @@
-import type { Article } from "@/components/hooks/wikipedia";
+import type { Article } from "@/hooks/wikipedia";
 import { type UseQueryResult, useQuery } from "@tanstack/react-query";
 
 const WORKER_URL = import.meta.env.VITE_BACKEND_URL;
