@@ -88,7 +88,7 @@ export const Quiz = () => {
             key={q.question}
             className={cn(
               "relative overflow-clip h-4 aspect-square rounded-full bg-primary/50 transition-all ease-in-out",
-              (idx === curQuestion) && "scale-120"
+              idx === curQuestion && "scale-120",
             )}
           >
             <motion.div
