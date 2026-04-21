@@ -55,22 +55,22 @@ export const Quiz = () => {
           <h2 className="text-2xl font-semibold text-center">
             {quiz?.questions[curQuestion].question}
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 justify-between gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-fr justify-between gap-4">
             {quiz?.questions[curQuestion].options.map((option, idx) => (
               <div
                 key={idx}
-                className="h-12 text-xl flex justify-start items-center group"
+                className="h-full min-h-12 text-xl flex justify-start items-center group"
                 onClick={() => {
                   selectAnswer(curQuestion, option);
                   nextQuestion();
                 }}
               >
-                <span className="bg-primary text-primary-foreground font-bold text-2xl h-full aspect-square flex items-center justify-center rounded-l-lg">
+                <span className="bg-primary text-primary-foreground font-bold text-2xl h-full aspect-square flex items-center justify-center rounded-l-lg shrink-0">
                   {["A", "B", "C", "D"][idx]}
                 </span>
 
-                <span className="border border-primary h-full w-full flex items-center justify-center rounded-r-lg group-hover:bg-primary/80 cursor-pointer transition-colors">
-                  {option}
+                <span className="border border-l-0 border-primary h-full w-full px-1 flex items-center justify-center rounded-r-lg group-hover:bg-primary/80 cursor-pointer transition-colors">
+                  <span className="leading-tight">{option}</span>
                 </span>
               </div>
             ))}
