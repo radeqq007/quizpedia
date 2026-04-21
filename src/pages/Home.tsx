@@ -1,10 +1,10 @@
+import { useQuiz } from "@/components/hooks/quiz";
+import { useQuizStore } from "@/components/hooks/store";
+import { useWikipediaArticle } from "@/components/hooks/wikipedia";
 import { SearchBar } from "@/components/SearchBar";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useQuiz } from "@/lib/quiz";
-import { useQuizStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
-import { useWikipediaArticle } from "@/lib/wikipedia";
 import { AnimatePresence, motion } from "motion/react";
 import { type ReactElement, useState } from "react";
 import { useNavigate } from "react-router-dom";

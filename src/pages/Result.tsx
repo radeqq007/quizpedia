@@ -1,11 +1,11 @@
+import { useQuizStore } from "@/components/hooks/store";
 import { Button } from "@/components/ui/button";
 import {
-  type ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
+    type ChartConfig,
+    ChartContainer,
+    ChartTooltip,
+    ChartTooltipContent,
 } from "@/components/ui/chart";
-import { useQuizStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import { LucideArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
