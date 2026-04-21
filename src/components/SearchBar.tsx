@@ -109,7 +109,7 @@ export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
 
               <div className="absolute top-full left-0 right-0 sm:flex justify-center gap-2 pt-2 hidden">
                 <AnimatePresence>
-                  {!input &&
+                  {!input && !selected &&
                     suggestions.map((suggestion, idx) => (
                       <motion.span
                         initial={{ opacity: -1, y: 8 }}
