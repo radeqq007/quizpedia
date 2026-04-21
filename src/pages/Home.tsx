@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const [selected, setSelected] = useState<string>("");
-  const { data: articleData } = useWikipediaArticle(selected);
+  const { data: articleData, isFetching } = useWikipediaArticle(selected);
   const {
     data: quizData,
     isFetching: isGenerating,
@@ -22,7 +22,7 @@ export const Home = () => {
   const setQuiz = useQuizStore((s) => s.setQuiz);
 
   let summary;
-  if (isGenerating) {
+  if (isGenerating || isFetching) {
     summary = (
       <div className="flex w-full flex-col gap-2">
         <Skeleton className="h-3 w-full" />
