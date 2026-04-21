@@ -1,6 +1,4 @@
-import { LucideSearch } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
 import {
   InputGroup,
@@ -13,7 +11,11 @@ import {
   PopoverContent,
 } from "@/components/ui/popover";
 import { Spinner } from "@/components/ui/spinner";
+import { cn } from "@/lib/utils";
 import { useWikipediaSearch } from "@/lib/wikipedia";
+import { LucideSearch } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
 
 interface SearchBarProps {
   selected: string;
@@ -92,6 +94,19 @@ export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
     return () => clearTimeout(delay);
   }, [input, selected]);
 
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+
+  useEffect(() => {
+    const uniqueSuggestions = new Set<string>();
+
+    while (uniqueSuggestions.size < 4) {
+      const randomIndex = Math.floor(Math.random() * placeholders.length);
+      uniqueSuggestions.add(placeholders[randomIndex]);
+    }
+
+    setSuggestions(Array.from(uniqueSuggestions));
+  }, []);
+
   return (
     <form
       className="w-full flex items-end gap-5"
@@ -102,24 +117,54 @@ export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
           <FieldLabel className="text-xl" htmlFor="input">
             I want a quiz about...
           </FieldLabel>
-          <Popover open={searchOpen} onOpenChange={setSearchOpen}>
-            <PopoverAnchor asChild>
-              <InputGroup>
-                <InputGroupInput
-                  id="input"
-                  autoComplete="off"
-                  placeholder={`${placeholders[Math.floor(Math.random() * placeholders.length)]}...`}
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                />
 
-                <InputGroupButton
-                  onClick={() => handleSelect(searchResults[0])}
-                >
-                  {isSearching ? <Spinner /> : <LucideSearch />}
-                </InputGroupButton>
-              </InputGroup>
-            </PopoverAnchor>
+          <Popover open={searchOpen} onOpenChange={setSearchOpen}>
+            <div className="relative">
+              <PopoverAnchor asChild>
+                <InputGroup>
+                  <InputGroupInput
+                    id="input"
+                    autoComplete="off"
+                    placeholder={`${placeholders[Math.floor(Math.random() * placeholders.length)]}...`}
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                  />
+
+                  <InputGroupButton
+                    onClick={() => handleSelect(searchResults[0])}
+                  >
+                    {isSearching ? <Spinner /> : <LucideSearch />}
+                  </InputGroupButton>
+                </InputGroup>
+              </PopoverAnchor>
+
+              <div className="absolute top-full left-0 right-0 sm:flex justify-center gap-2 pt-2 hidden">
+                <AnimatePresence>
+                  {!input &&
+                    suggestions.map((suggestion, idx) => (
+                      <motion.span
+                        initial={{ opacity: -1, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ delay: idx / 10 }}
+                      >
+                        <Button
+                          key={idx}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleSelect(suggestion);
+                          }}
+                          className={cn("font-normal")}
+                          variant="secondary"
+                          size="xs"
+                        >
+                          {suggestion}
+                        </Button>
+                      </motion.span>
+                    ))}
+                </AnimatePresence>
+              </div>
+            </div>
 
             <PopoverContent
               onOpenAutoFocus={(e) => e.preventDefault()}
