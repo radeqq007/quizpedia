@@ -17,6 +17,7 @@ import { useWikipediaSearch } from "@/lib/wikipedia";
 import { LucideSearch } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { SearchSuggestions } from "./SearchSuggestions";
 
 interface SearchBarProps {
   selected: string;
@@ -63,19 +64,6 @@ export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
     return () => clearTimeout(delay);
   }, [input, selected]);
 
-  const [suggestions, setSuggestions] = useState<string[]>([]);
-
-  useEffect(() => {
-    const uniqueSuggestions = new Set<string>();
-
-    while (uniqueSuggestions.size < 4) {
-      const randomIndex = Math.floor(Math.random() * exampleTopics.length);
-      uniqueSuggestions.add(exampleTopics[randomIndex]);
-    }
-
-    setSuggestions(Array.from(uniqueSuggestions));
-  }, []);
-
   return (
     <form
       className="w-full flex items-end gap-5"
@@ -107,32 +95,11 @@ export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
                 </InputGroup>
               </PopoverAnchor>
 
-              <div className="absolute top-full left-0 right-0 sm:flex justify-center gap-2 pt-2 hidden">
-                <AnimatePresence>
-                  {!input && !selected &&
-                    suggestions.map((suggestion, idx) => (
-                      <motion.span
-                        initial={{ opacity: -1, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9 }}
-                        transition={{ delay: idx / 10 }}
-                      >
-                        <Button
-                          key={idx}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleSelect(suggestion);
-                          }}
-                          className={cn("font-normal")}
-                          variant="secondary"
-                          size="xs"
-                        >
-                          {suggestion}
-                        </Button>
-                      </motion.span>
-                    ))}
-                </AnimatePresence>
-              </div>
+              <SearchSuggestions
+                input={input}
+                selected={selected}
+                onSelect={handleSelect}
+              />
             </div>
 
             <PopoverContent
