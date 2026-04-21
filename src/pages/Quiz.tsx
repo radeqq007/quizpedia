@@ -12,7 +12,7 @@ export const Quiz = () => {
       navigate("/");
       return;
     }
-    if (curQuestion >= quiz!.questions.length) navigate("/result");
+    if (curQuestion >= quiz?.questions.length) navigate("/result");
   }, [quiz, curQuestion, navigate]);
 
   useEffect(() => {
@@ -61,8 +61,9 @@ export const Quiz = () => {
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-fr justify-between gap-4">
             {quiz?.questions[curQuestion].options.map((option, idx) => (
-              <div
-                key={idx}
+              <button
+                type="button"
+                key={option}
                 className="h-full min-h-12 text-xl flex justify-start items-center group"
                 onClick={() => {
                   selectAnswer(curQuestion, option);
@@ -76,15 +77,15 @@ export const Quiz = () => {
                 <span className="border border-l-0 border-primary h-full w-full px-1 flex items-center justify-center rounded-r-lg group-hover:bg-primary/80 cursor-pointer transition-colors">
                   <span className="leading-tight">{option}</span>
                 </span>
-              </div>
+              </button>
             ))}
           </div>
         </motion.div>
       </AnimatePresence>
       <div className="flex gap-2 m-auto">
-        {quiz?.questions.map((_, idx) => (
+        {quiz?.questions.map((q, idx) => (
           <span
-            key={idx}
+            key={q.question}
             className={clsx(
               "relative overflow-clip h-4 aspect-square rounded-full bg-primary/50",
             )}

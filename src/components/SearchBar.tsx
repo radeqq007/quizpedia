@@ -90,7 +90,7 @@ export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
     }, 500);
 
     return () => clearTimeout(delay);
-  }, [input]);
+  }, [input, selected]);
 
   return (
     <form
@@ -135,6 +135,7 @@ export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
                   {searchResults && searchResults.length > 0 ? (
                     searchResults?.map((result) => (
                       <button
+                        type="button"
                         className="my-1 cursor-pointer hover:bg-input h-8 px-3 rounded-lg text-left transition-colors"
                         key={result}
                         onClick={() => handleSelect(result)}
