@@ -11,8 +11,8 @@ import {
 } from "@/components/ui/popover";
 import { Spinner } from "@/components/ui/spinner";
 import { exampleTopics } from "@/constants/constants";
+import { useSearchBar } from "@/hooks/useSearchBar";
 import { useWikipediaSearch } from "@/hooks/wikipedia";
-import { cn } from "@/lib/utils";
 import { LucideSearch } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
@@ -24,44 +24,15 @@ interface SearchBarProps {
 }
 
 export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
-  const [input, setInput] = useState<string>("");
-  const [query, setQuery] = useState<string>("");
-
-  const { data: searchData, isFetching: isSearching } =
-    useWikipediaSearch(query);
-
-  const [searchOpen, setSearchOpen] = useState<boolean>(false);
-  const searchResults: string[] = searchData?.[1];
-
-  const handleSelect = (value: string, e?: React.SubmitEvent) => {
-    e?.preventDefault();
-    if (!value && searchResults.length === 0) return;
-    if (!value) return;
-
-    onSelect(value);
-    setInput(value);
-    setSearchOpen(false);
-  };
-
-  useEffect(() => {
-    if (!input) {
-      setSearchOpen(false);
-      setQuery("");
-      return;
-    }
-
-    if (input === selected) {
-      setSearchOpen(false);
-      return;
-    }
-
-    const delay = setTimeout(() => {
-      setQuery(input);
-      setSearchOpen(true);
-    }, 300);
-
-    return () => clearTimeout(delay);
-  }, [input, selected]);
+  const {
+    input,
+    setInput,
+    searchResults,
+    isSearching,
+    searchOpen,
+    setSearchOpen,
+    handleSelect,
+  } = useSearchBar(onSelect, selected);
 
   return (
     <form
