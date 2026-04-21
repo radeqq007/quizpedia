@@ -1,14 +1,13 @@
-import { AnimatePresence, motion } from "motion/react";
-import { type ReactElement, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { SearchBar } from "@/components/SearchBar";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useQuiz } from "@/lib/quiz";
 import { useQuizStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import { useWikipediaArticle } from "@/lib/wikipedia";
+import { AnimatePresence, motion } from "motion/react";
+import { type ReactElement, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const [selected, setSelected] = useState<string>("");
@@ -61,7 +60,7 @@ export const Home = () => {
             !selected && "hidden",
           )}
         >
-          <Label className="text-2xl font-bold">Summary</Label>
+          <h2 className="text-2xl font-bold">Summary</h2>
           {summary}
 
           <span className="w-full flex gap-2 justify-end mt-5">
