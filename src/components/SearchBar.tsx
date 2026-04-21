@@ -58,7 +58,7 @@ export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
     const delay = setTimeout(() => {
       setQuery(input);
       setSearchOpen(true);
-    }, 500);
+    }, 300);
 
     return () => clearTimeout(delay);
   }, [input, selected]);
