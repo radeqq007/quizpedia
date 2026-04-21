@@ -46,5 +46,5 @@ export const exampleTopics: string[] = [
   "Cyberpunk 2077",
   "Omori (video game)",
   "The Beatles",
-  "My Bloody Valentine (band)"
+  "My Bloody Valentine (band)",
 ];
