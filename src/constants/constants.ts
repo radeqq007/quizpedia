@@ -1,7 +1,7 @@
 export const exampleTopics: string[] = [
   "Ducks",
   "Radiohead",
-  "The smashing pumpkins",
+  "The Smashing Pumpkins",
   "Cats",
   "Edam cheese",
   "Earth",
@@ -42,7 +42,7 @@ export const exampleTopics: string[] = [
   "Funkadelic",
   "Nirvana (band)",
   "King Crimson",
-  "Alice In Chains",
+  "Alice in Chains",
   "Cyberpunk 2077",
   "Omori (video game)",
   "The Beatles",
