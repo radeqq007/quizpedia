@@ -66,6 +66,7 @@ export const Home = () => {
     e?.preventDefault();
     if (searchResults.length === 0) return;
     setSelected(value);
+    setInput(value);
     setSearchOpen(false);
   };
 
@@ -73,6 +74,11 @@ export const Home = () => {
     if (!input) {
       setSearchOpen(false);
       setQuery("");
+      return;
+    }
+
+    if (input === selected) {
+      setSearchOpen(false);
       return;
     }
 
@@ -134,6 +140,7 @@ export const Home = () => {
                     id="input"
                     autoComplete="off"
                     placeholder={`${placeholders[Math.floor(Math.random() * placeholders.length)]}...`}
+                    value={input}
                     onChange={(e) => setInput(e.target.value)}
                   />
 
