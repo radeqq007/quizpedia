@@ -1,8 +1,8 @@
+import { useQuizStore } from "@/lib/store";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useQuizStore } from "@/lib/store";
 
 export const Quiz = () => {
   const { quiz, curQuestion, selectAnswer, nextQuestion } = useQuizStore();
@@ -87,7 +87,8 @@ export const Quiz = () => {
           <span
             key={q.question}
             className={clsx(
-              "relative overflow-clip h-4 aspect-square rounded-full bg-primary/50",
+              "relative overflow-clip h-4 aspect-square rounded-full bg-primary/50 transition-all ease-in-out",
+              (idx === curQuestion) && "scale-120"
             )}
           >
             <motion.div
