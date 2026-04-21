@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import {
-    type ChartConfig,
-    ChartContainer,
-    ChartTooltip,
-    ChartTooltipContent,
+  type ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
 } from "@/components/ui/chart";
 import { useQuizStore } from "@/hooks/store";
 import { cn } from "@/lib/utils";
