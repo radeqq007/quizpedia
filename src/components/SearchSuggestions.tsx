@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { exampleTopics } from "@/constants/constants";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { exampleTopics } from "@/constants/constants";
 
 interface SearchSuggestionsProps {
   input: string;
@@ -33,13 +33,14 @@ export const SearchSuggestions = ({
           !selected &&
           suggestions.map((suggestion, idx) => (
             <motion.span
+              key={suggestion}
               initial={{ opacity: -1, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ delay: idx / 10 }}
             >
               <Button
-                key={idx}
+                key={suggestion}
                 onClick={(e) => {
                   e.preventDefault();
                   onSelect(suggestion);

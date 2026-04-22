@@ -1,3 +1,6 @@
+import { AnimatePresence, motion } from "motion/react";
+import { type ReactElement, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { SearchBar } from "@/components/SearchBar";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -5,9 +8,6 @@ import { useQuiz } from "@/hooks/useQuiz";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { useWikipediaArticle } from "@/hooks/useWikipedia";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "motion/react";
-import { type ReactElement, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const [selected, setSelected] = useState<string>("");

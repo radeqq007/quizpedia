@@ -1,17 +1,17 @@
-import { Button } from "@/components/ui/button";
-import {
-    type ChartConfig,
-    ChartContainer,
-    ChartTooltip,
-    ChartTooltipContent,
-} from "@/components/ui/chart";
-import { useQuizStore } from "@/hooks/useQuizStore";
-import { cn } from "@/lib/utils";
 import { LucideArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
+import { Button } from "@/components/ui/button";
+import {
+  type ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import { useQuizStore } from "@/hooks/useQuizStore";
+import { cn } from "@/lib/utils";
 
 export const Result = () => {
   const { quiz, answers, reset } = useQuizStore();

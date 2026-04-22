@@ -1,5 +1,5 @@
-import type { Article } from "@/hooks/useWikipedia";
 import { type UseQueryResult, useQuery } from "@tanstack/react-query";
+import type { Article } from "@/hooks/useWikipedia";
 
 const WORKER_URL = import.meta.env.VITE_BACKEND_URL;
 
