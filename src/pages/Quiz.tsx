@@ -4,6 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { cn } from "@/lib/utils";
 
+const keyMap: Record<string, number> = {
+  "1": 0,
+  "2": 1,
+  "3": 2,
+  "4": 3,
+  a: 0,
+  b: 1,
+  c: 2,
+  d: 3,
+};
+
 export const Quiz = () => {
   const { quiz, curQuestion, selectAnswer, nextQuestion } = useQuizStore();
   const navigate = useNavigate();
@@ -20,16 +31,6 @@ export const Quiz = () => {
       if (!quiz || curQuestion >= quiz.questions.length) return;
 
       const options = quiz.questions[curQuestion].options;
-      const keyMap: Record<string, number> = {
-        "1": 0,
-        "2": 1,
-        "3": 2,
-        "4": 3,
-        a: 0,
-        b: 1,
-        c: 2,
-        d: 3,
-      };
 
       const idx = keyMap[e.key.toLowerCase()];
 
