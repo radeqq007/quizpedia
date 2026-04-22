@@ -27,7 +27,7 @@ const SummaryContent = ({
   else if (error?.message === "rate_limited")
     return <p className="text-primary">Rate limit exceeded. Try again soon.</p>;
   else if (error)
-    <p className="text-primary">Internal server error. Try again.</p>;
+    return <p className="text-primary">Internal server error. Try again.</p>;
   else return <span>{summary}</span>;
 };
 
