@@ -15,13 +15,30 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 import { exampleTopics } from "@/constants/constants";
 import { useSearchBar } from "@/hooks/useSearchBar";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import en from "@/assets/en.svg";
+import pl from "@/assets/pl.svg";
 
 interface SearchBarProps {
   selected: string;
   onSelect: (value: string) => void;
+  lang: string;
+  onLangChange: (lang: "en" | "pl") => void;
 }
 
-export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
+export const SearchBar = ({
+  onSelect,
+  selected,
+  lang,
+  onLangChange,
+}: SearchBarProps) => {
   const {
     input,
     setInput,
@@ -30,7 +47,7 @@ export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
     searchOpen,
     setSearchOpen,
     handleSelect,
-  } = useSearchBar(onSelect, selected);
+  } = useSearchBar(onSelect, selected, lang);
 
   return (
     <form
@@ -46,21 +63,41 @@ export const SearchBar = ({ onSelect, selected }: SearchBarProps) => {
           <Popover open={searchOpen} onOpenChange={setSearchOpen}>
             <div className="relative">
               <PopoverAnchor asChild>
-                <InputGroup>
-                  <InputGroupInput
-                    id="input"
-                    autoComplete="off"
-                    placeholder={`${exampleTopics[Math.floor(Math.random() * exampleTopics.length)]}...`}
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                  />
+                <div className="flex w-full gap-2">
+                  <InputGroup>
+                    <InputGroupInput
+                      id="input"
+                      autoComplete="off"
+                      placeholder={`${exampleTopics[Math.floor(Math.random() * exampleTopics.length)]}...`}
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                    />
 
-                  <InputGroupButton
-                    onClick={() => handleSelect(searchResults[0])}
+                    <InputGroupButton
+                      onClick={() => handleSelect(searchResults[0])}
+                    >
+                      {isSearching ? <Spinner /> : <LucideSearch />}
+                    </InputGroupButton>
+                  </InputGroup>
+                  <Select
+                    value={lang}
+                    onValueChange={(e: "en" | "pl") => onLangChange(e)}
                   >
-                    {isSearching ? <Spinner /> : <LucideSearch />}
-                  </InputGroupButton>
-                </InputGroup>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectItem value="en">
+                          <img src={en} className="h-6" />
+                        </SelectItem>
+                        <SelectItem value="pl">
+                          <img src={pl} className="h-6" />
+                        </SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </div>
               </PopoverAnchor>
 
               <SearchSuggestions

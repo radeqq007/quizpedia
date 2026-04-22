@@ -11,7 +11,8 @@ import { cn } from "@/lib/utils";
 
 export const Home = () => {
   const [selected, setSelected] = useState<string>("");
-  const { data: articleData, isFetching } = useWikipediaArticle(selected);
+  const [lang, setLang] = useState<"en" | "pl">("en");
+  const { data: articleData, isFetching } = useWikipediaArticle(selected, lang);
   const {
     data: quizData,
     isFetching: isGenerating,
@@ -44,7 +45,12 @@ export const Home = () => {
 
   return (
     <div className="flex flex-col gap-8 items-center w-full md:w-2/3 lg:w-1/3 lg:min-w-140 m-auto p-8">
-      <SearchBar selected={selected} onSelect={setSelected} />
+      <SearchBar
+        lang={lang}
+        onLangChange={setLang}
+        selected={selected}
+        onSelect={setSelected}
+      />
 
       <AnimatePresence mode="wait">
         <motion.div

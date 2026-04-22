@@ -1,31 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
 
-const WIKIPEDIA_BASE = "https://en.wikipedia.org/w/api.php";
-
 export type Article = {
   title: string;
   content: string;
 };
 
-export function useWikipediaSearch(query: string) {
+export function useWikipediaSearch(query: string, lang: string) {
   return useQuery({
     queryKey: ["wikiSearch", query],
-    queryFn: () => fetchWikiSearch(query),
+    queryFn: () => fetchWikiSearch(query, lang),
     enabled: !!query,
     placeholderData: (previousData) => previousData,
   });
 }
 
-export function useWikipediaArticle(title: string) {
+export function useWikipediaArticle(title: string, lang: string) {
   return useQuery({
     queryKey: ["wikiArticle", title],
-    queryFn: () => fetchWikiArticle(title),
+    queryFn: () => fetchWikiArticle(title, lang),
     enabled: !!title,
   });
 }
 
-const fetchWikiSearch = async (query: string) => {
+const fetchWikiSearch = async (query: string, lang: string) => {
   if (!query) return [];
+
+  const WIKIPEDIA_BASE = `https://${lang}.wikipedia.org/w/api.php`;
 
   const url = new URL(WIKIPEDIA_BASE);
 
@@ -44,7 +44,12 @@ const fetchWikiSearch = async (query: string) => {
   return res.json();
 };
 
-const fetchWikiArticle = async (title: string): Promise<Article> => {
+const fetchWikiArticle = async (
+  title: string,
+  lang: string,
+): Promise<Article> => {
+  const WIKIPEDIA_BASE = `https://${lang}.wikipedia.org/w/api.php`;
+
   const url = new URL(WIKIPEDIA_BASE);
 
   url.searchParams.set("action", "query");

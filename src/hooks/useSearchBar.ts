@@ -4,13 +4,16 @@ import { useWikipediaSearch } from "@/hooks/useWikipedia";
 export const useSearchBar = (
   onSelect: (v: string) => void,
   selected: string,
+  lang: string,
 ) => {
   const [input, setInput] = useState<string>("");
   const [query, setQuery] = useState<string>("");
   const [searchOpen, setSearchOpen] = useState<boolean>(false);
 
-  const { data: searchData, isFetching: isSearching } =
-    useWikipediaSearch(query);
+  const { data: searchData, isFetching: isSearching } = useWikipediaSearch(
+    query,
+    lang,
+  );
 
   const searchResults: string[] = searchData?.[1];
 
