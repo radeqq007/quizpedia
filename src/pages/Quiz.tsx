@@ -75,7 +75,9 @@ export const Quiz = () => {
                 </span>
 
                 <span className="border border-l-0 border-primary h-full w-full px-1 flex items-center justify-center rounded-r-lg group-hover:bg-primary/80 cursor-pointer transition-colors">
-                  <span className="leading-tight wrap-break-word min-w-0 w-full text-center py-2">{option}</span>
+                  <span className="leading-tight wrap-break-word min-w-0 w-full text-center py-2">
+                    {option}
+                  </span>
                 </span>
               </button>
             ))}
