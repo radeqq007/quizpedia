@@ -22,6 +22,6 @@ export const useQuizStore = create<QuizStore>(
       set((s) => ({ answers: { ...s.answers, [index]: answer } })),
     nextQuestion: () => set((s) => ({ curQuestion: s.curQuestion + 1 })),
     reset: () => set({ quiz: null, curQuestion: 0, answers: {} }),
-    retry: () => set({ curQuestion: 0, answers: {}})
+    retry: () => set({ curQuestion: 0, answers: {} }),
   }),
 );
