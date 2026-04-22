@@ -69,7 +69,7 @@ export const SearchBar = ({
                     <InputGroupInput
                       id="input"
                       autoComplete="off"
-                      placeholder={`${exampleTopics[Math.floor(Math.random() * exampleTopics.length)]}...`}
+                      placeholder={`${exampleTopics[lang][Math.floor(Math.random() * exampleTopics[lang].length)]}...`}
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                     />
@@ -105,6 +105,7 @@ export const SearchBar = ({
                 input={input}
                 selected={selected}
                 onSelect={handleSelect}
+                lang={lang}
               />
             </div>
 

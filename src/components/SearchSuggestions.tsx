@@ -2,17 +2,20 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { exampleTopics } from "@/constants/constants";
+import type { Language } from "@/types";
 
 interface SearchSuggestionsProps {
   input: string;
   selected: string;
   onSelect: (value: string) => void;
+  lang: Language;
 }
 
 export const SearchSuggestions = ({
   input,
   selected,
   onSelect,
+  lang,
 }: SearchSuggestionsProps) => {
   const [suggestions, setSuggestions] = useState<string[]>([]);
 
@@ -20,8 +23,10 @@ export const SearchSuggestions = ({
     const uniqueSuggestions = new Set<string>();
 
     while (uniqueSuggestions.size < 4) {
-      const randomIndex = Math.floor(Math.random() * exampleTopics.length);
-      uniqueSuggestions.add(exampleTopics[randomIndex]);
+      const randomIndex = Math.floor(
+        Math.random() * exampleTopics[lang].length,
+      );
+      uniqueSuggestions.add(exampleTopics[lang][randomIndex]);
     }
 
     setSuggestions(Array.from(uniqueSuggestions));
