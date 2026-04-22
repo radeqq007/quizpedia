@@ -1,14 +1,14 @@
 export const Footer = () => {
   return (
     <div className="w-full h-10 py-10 sm:py-6 px-4 text-secondary-foreground flex flex-col sm:flex-row items-center sm:justify-between *:flex *:gap-4 mb-5 sm:mb-0">
-      <span>
+      <span className="flex flex-col-reverse sm:flex-row justify-center items-center">
         © 2026
-        <span className="flex gap-1">
+        <span className="text-center">
           Made with ❤ by
           <a
             href="https://github.com/radeqq007"
             target="_blank"
-            className="underline"
+            className="ml-2 underline"
             rel="noopener"
           >
             Radosław Kaczmarczyk
