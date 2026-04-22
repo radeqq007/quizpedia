@@ -38,7 +38,7 @@ export const exampleTopics: string[] = [
   "Freddie Mercury",
   "Nevermind (album)",
   "Panchiko",
-  "Slipknot",
+  "Slipknot (band)",
   "Funkadelic",
   "Nirvana (band)",
   "King Crimson",
