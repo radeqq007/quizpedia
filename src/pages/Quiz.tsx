@@ -59,7 +59,7 @@ export const Quiz = () => {
           <h2 className="text-2xl font-semibold text-center">
             {quiz?.questions[curQuestion].question}
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 justify-between gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-fr justify-between gap-4">
             {quiz?.questions[curQuestion].options.map((option, idx) => (
               <button
                 type="button"
