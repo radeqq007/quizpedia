@@ -32,7 +32,7 @@ export const SearchSuggestions = ({
     setSuggestions(Array.from(uniqueSuggestions));
   }, [lang]);
   return (
-    <div className="absolute top-full left-0 right-0 sm:flex justify-center gap-2 pt-2 hidden">
+    <div className="absolute top-full left-0 right-0 flex justify-center gap-2 pt-2">
       <AnimatePresence mode="wait">
         {!input &&
           !selected &&
@@ -43,6 +43,7 @@ export const SearchSuggestions = ({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ delay: idx / 10 }}
+              className={idx == 3 ? "hidden sm:inline" : ""} // display only 3 suggestions on mobile
             >
               <Button
                 key={suggestion}
