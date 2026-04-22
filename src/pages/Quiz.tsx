@@ -24,9 +24,7 @@ export const Quiz = () => {
       return;
     }
     if (curQuestion >= quiz?.questions.length) navigate("/result");
-  }, [quiz, curQuestion, navigate]);
 
-  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!quiz || curQuestion >= quiz.questions.length) return;
 
@@ -42,7 +40,7 @@ export const Quiz = () => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [quiz, curQuestion, selectAnswer, nextQuestion]);
+  }, [quiz, curQuestion, navigate, selectAnswer, nextQuestion]);
 
   if (!quiz || curQuestion >= quiz.questions.length) return null;
 
