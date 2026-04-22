@@ -34,12 +34,10 @@ export const Home = () => {
     );
   } else if (quizError?.message === "rate_limited") {
     summary = (
-      <p className="text-primary-foreground">
-        Rate limit exceeded. Try again soon.
-      </p>
+      <p className="text-primary">Rate limit exceeded. Try again soon.</p>
     );
   } else if (quizError) {
-    summary = <p className="text-primary-foreground">Internal server error.</p>;
+    summary = <p className="text-primary">Internal server error. Try again.</p>;
   } else {
     summary = <span>{quizData?.summary}</span>;
   }
