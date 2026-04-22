@@ -12,7 +12,7 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 import { exampleTopics } from "@/constants/constants";
 import { useSearchBar } from "@/hooks/useSearchBar";
-import { useWikipediaSearch } from "@/hooks/wikipedia";
+import { useWikipediaSearch } from "@/hooks/useWikipedia";
 import { LucideSearch } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
