@@ -1,3 +1,4 @@
+import type { Language } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 
 export type Article = {
@@ -5,7 +6,7 @@ export type Article = {
   content: string;
 };
 
-export function useWikipediaSearch(query: string, lang: string) {
+export function useWikipediaSearch(query: string, lang: Language) {
   return useQuery({
     queryKey: ["wikiSearch", query],
     queryFn: () => fetchWikiSearch(query, lang),
@@ -14,7 +15,7 @@ export function useWikipediaSearch(query: string, lang: string) {
   });
 }
 
-export function useWikipediaArticle(title: string, lang: string) {
+export function useWikipediaArticle(title: string, lang: Language) {
   return useQuery({
     queryKey: ["wikiArticle", title],
     queryFn: () => fetchWikiArticle(title, lang),
@@ -22,7 +23,7 @@ export function useWikipediaArticle(title: string, lang: string) {
   });
 }
 
-const fetchWikiSearch = async (query: string, lang: string) => {
+const fetchWikiSearch = async (query: string, lang: Language) => {
   if (!query) return [];
 
   const WIKIPEDIA_BASE = `https://${lang}.wikipedia.org/w/api.php`;
@@ -46,7 +47,7 @@ const fetchWikiSearch = async (query: string, lang: string) => {
 
 const fetchWikiArticle = async (
   title: string,
-  lang: string,
+  lang: Language,
 ): Promise<Article> => {
   const WIKIPEDIA_BASE = `https://${lang}.wikipedia.org/w/api.php`;
 

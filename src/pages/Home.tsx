@@ -8,10 +8,11 @@ import { useQuiz } from "@/hooks/useQuiz";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { useWikipediaArticle } from "@/hooks/useWikipedia";
 import { cn } from "@/lib/utils";
+import type { Language } from "@/types";
 
 export const Home = () => {
   const [selected, setSelected] = useState<string>("");
-  const [lang, setLang] = useState<"en" | "pl">("en");
+  const [lang, setLang] = useState<Language>("en");
   const { data: articleData, isFetching } = useWikipediaArticle(selected, lang);
   const {
     data: quizData,

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useWikipediaSearch } from "@/hooks/useWikipedia";
+import type { Language } from "@/types";
 
 export const useSearchBar = (
   onSelect: (v: string) => void,
   selected: string,
-  lang: string,
+  lang: Language,
 ) => {
   const [input, setInput] = useState<string>("");
   const [query, setQuery] = useState<string>("");

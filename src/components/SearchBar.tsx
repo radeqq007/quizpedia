@@ -25,12 +25,13 @@ import {
 } from "@/components/ui/select";
 import en from "@/assets/en.svg";
 import pl from "@/assets/pl.svg";
+import type { Language } from "@/types";
 
 interface SearchBarProps {
   selected: string;
   onSelect: (value: string) => void;
-  lang: string;
-  onLangChange: (lang: "en" | "pl") => void;
+  lang: Language;
+  onLangChange: (lang: Language) => void;
 }
 
 export const SearchBar = ({
@@ -81,7 +82,7 @@ export const SearchBar = ({
                   </InputGroup>
                   <Select
                     value={lang}
-                    onValueChange={(e: "en" | "pl") => onLangChange(e)}
+                    onValueChange={(e: Language) => onLangChange(e)}
                   >
                     <SelectTrigger>
                       <SelectValue />
