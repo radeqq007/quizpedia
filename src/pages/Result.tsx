@@ -1,8 +1,3 @@
-import { LucideArrowLeft } from "lucide-react";
-import { motion } from "motion/react";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import { Button } from "@/components/ui/button";
 import {
   type ChartConfig,
@@ -12,9 +7,14 @@ import {
 } from "@/components/ui/chart";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { cn } from "@/lib/utils";
+import { LucideArrowLeft, LucideRotateCcw } from "lucide-react";
+import { motion } from "motion/react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 
 export const Result = () => {
-  const { quiz, answers, reset } = useQuizStore();
+  const { quiz, answers, reset, retry } = useQuizStore();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -117,16 +117,28 @@ export const Result = () => {
           </span>
         </motion.div>
       ))}
-      <Button
-        size="lg"
-        onClick={() => {
-          reset();
-          navigate("/");
-        }}
-      >
-        <LucideArrowLeft />
-        Try a different quiz
-      </Button>
+
+      <div className="flex justify-end w-full gap-4">
+        <Button size="lg" variant="secondary" className="group" onClick={() => {
+          retry();
+          navigate("/quiz");
+        }}>
+          <LucideRotateCcw className="group-hover:-rotate-20 transition-transform" />
+          Try again
+        </Button>
+
+        <Button
+          size="lg"
+          className="group"
+          onClick={() => {
+            reset();
+            navigate("/");
+          }}
+          >
+          <LucideArrowLeft className="group-hover:-translate-x-1 transition-transform" />
+          Try a different quiz
+        </Button>
+      </div>
     </div>
   );
 };
