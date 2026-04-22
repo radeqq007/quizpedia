@@ -1,5 +1,5 @@
+import { useWikipediaSearch } from "@/hooks/useWikipedia";
 import { useEffect, useState } from "react";
-import { useWikipediaSearch } from "./useWikipedia";
 
 export const useSearchBar = (
   onSelect: (v: string) => void,

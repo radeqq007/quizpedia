@@ -1,12 +1,12 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { PageTransition } from "@/components/PageTransition";
 import { NotFound } from "@/pages/404";
 import { Home } from "@/pages/Home";
 import { Quiz } from "@/pages/Quiz";
 import { Result } from "@/pages/Result";
 import { AnimatePresence } from "motion/react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import { PageTransition } from "./components/PageTransition";
 
 function App() {
   const location = useLocation();
