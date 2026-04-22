@@ -30,10 +30,10 @@ export const SearchSuggestions = ({
     }
 
     setSuggestions(Array.from(uniqueSuggestions));
-  }, []);
+  }, [lang]);
   return (
     <div className="absolute top-full left-0 right-0 sm:flex justify-center gap-2 pt-2 hidden">
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {!input &&
           !selected &&
           suggestions.map((suggestion, idx) => (
