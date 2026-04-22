@@ -1,5 +1,7 @@
 import { LucideSearch } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import en from "@/assets/en.svg";
+import pl from "@/assets/pl.svg";
 import { SearchSuggestions } from "@/components/SearchSuggestions";
 import { Field, FieldLabel } from "@/components/ui/field";
 import {
@@ -12,9 +14,6 @@ import {
   PopoverAnchor,
   PopoverContent,
 } from "@/components/ui/popover";
-import { Spinner } from "@/components/ui/spinner";
-import { exampleTopics } from "@/constants/constants";
-import { useSearchBar } from "@/hooks/useSearchBar";
 import {
   Select,
   SelectContent,
@@ -23,8 +22,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import en from "@/assets/en.svg";
-import pl from "@/assets/pl.svg";
+import { Spinner } from "@/components/ui/spinner";
+import { exampleTopics } from "@/constants/constants";
+import { useSearchBar } from "@/hooks/useSearchBar";
 import type { Language } from "@/types";
 
 interface SearchBarProps {
@@ -90,10 +90,10 @@ export const SearchBar = ({
                     <SelectContent>
                       <SelectGroup>
                         <SelectItem value="en">
-                          <img src={en} className="h-6" />
+                          <img src={en} alt="EN" className="h-6" />
                         </SelectItem>
                         <SelectItem value="pl">
-                          <img src={pl} className="h-6" />
+                          <img src={pl} alt="PL" className="h-6" />
                         </SelectItem>
                       </SelectGroup>
                     </SelectContent>

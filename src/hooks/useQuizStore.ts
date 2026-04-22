@@ -1,5 +1,5 @@
-import type { QuizData } from "@/hooks/useQuiz";
 import { create } from "zustand";
+import type { QuizData } from "@/hooks/useQuiz";
 
 type QuizStore = {
   quiz: QuizData | null;
