@@ -26,6 +26,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { exampleTopics } from "@/constants/constants";
 import { useSearchBar } from "@/hooks/useSearchBar";
 import type { Language } from "@/types";
+import { useMemo } from "react";
 
 interface SearchBarProps {
   selected: string;
@@ -50,6 +51,11 @@ export const SearchBar = ({
     handleSelect,
   } = useSearchBar(onSelect, selected, lang);
 
+  const placeholder = useMemo(() => {
+    const arr = exampleTopics[lang];
+    return arr[Math.floor(Math.random() * arr.length)] + "...";
+  }, [lang]);
+
   return (
     <form
       className="w-full flex items-end gap-5"
@@ -69,7 +75,7 @@ export const SearchBar = ({
                     <InputGroupInput
                       id="input"
                       autoComplete="off"
-                      placeholder={`${exampleTopics[lang][Math.floor(Math.random() * exampleTopics[lang].length)]}...`}
+                      placeholder={placeholder}
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                     />
