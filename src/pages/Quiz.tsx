@@ -1,8 +1,8 @@
+import { useQuizStore } from "@/hooks/useQuizStore";
+import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useQuizStore } from "@/hooks/useQuizStore";
-import { cn } from "@/lib/utils";
 
 export const Quiz = () => {
   const { quiz, curQuestion, selectAnswer, nextQuestion } = useQuizStore();
@@ -59,23 +59,23 @@ export const Quiz = () => {
           <h2 className="text-2xl font-semibold text-center">
             {quiz?.questions[curQuestion].question}
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-fr justify-between gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 justify-between gap-4">
             {quiz?.questions[curQuestion].options.map((option, idx) => (
               <button
                 type="button"
                 key={option}
-                className="h-full min-h-12 text-xl flex justify-start items-center group"
+                className="h-full min-h-12 text-xl flex justify-start items-center group min-w-0 overflow-hidden"
                 onClick={() => {
                   selectAnswer(curQuestion, option);
                   nextQuestion();
                 }}
               >
-                <span className="bg-primary text-primary-foreground font-bold text-2xl h-full aspect-square flex items-center justify-center rounded-l-lg shrink-0">
+                <span className="bg-primary text-primary-foreground font-bold text-2xl min-w-0 h-full aspect-square flex items-center justify-center rounded-l-lg shrink-0">
                   {["A", "B", "C", "D"][idx]}
                 </span>
 
                 <span className="border border-l-0 border-primary h-full w-full px-1 flex items-center justify-center rounded-r-lg group-hover:bg-primary/80 cursor-pointer transition-colors">
-                  <span className="leading-tight">{option}</span>
+                  <span className="leading-tight wrap-break-word min-w-0 w-full text-center py-2">{option}</span>
                 </span>
               </button>
             ))}
