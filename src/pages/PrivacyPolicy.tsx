@@ -95,7 +95,7 @@ export const PrivacyPolicy = () => {
             which forwards them to the Groq API to generate questions using the Llama 3.1 model.
             The payload contains only article data — no user identity, account, or personal information is included.
             Groq's privacy policy is available at
-            <a href="groq.com/privacy-policy" target="_blank" rel="noopener" className="underline ml-1">
+            <a href="https://groq.com/privacy-policy" target="_blank" rel="noopener" className="underline ml-1">
               groq.com/privacy-policy
             </a>
             .
@@ -169,7 +169,7 @@ export const PrivacyPolicy = () => {
             <td>Groq API</td>
             <td>Quiz generation (LLM inference)</td>
             <td>
-              <a href="groq.com/privacy-policy" target="_blank" rel="noopener" className="underline ml-1">
+              <a href="https://groq.com/privacy-policy" target="_blank" rel="noopener" className="underline ml-1">
                 groq.com/privacy-policy
               </a>
             </td>
