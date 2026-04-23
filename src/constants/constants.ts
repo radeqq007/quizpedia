@@ -103,7 +103,7 @@ export const exampleTopics: Record<Language, string[]> = {
     "Stoicyzm",
     "Absurdyzm",
     "Nihilizm",
-    "Dylacja czasu",
+    "Dylatacja czasu",
     "Apollo 11",
   ],
 };
