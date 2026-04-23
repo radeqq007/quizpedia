@@ -1,6 +1,6 @@
 import { LucideArrowLeft, LucideRotateCcw } from "lucide-react";
 import { motion } from "motion/react";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import { Button } from "@/components/ui/button";
@@ -27,9 +27,13 @@ export const Result = () => {
 
   if (!quiz) return null;
 
-  const score = quiz.questions.filter((q, i) => answers[i] === q.answer).length;
-  const total = quiz.questions.length;
-  const percentage = Math.round((score / total) * 100);
+  const { score, total, percentage } = useMemo(() => {
+    const score = quiz.questions.filter((q, i) => answers[i] === q.answer).length;
+    const total = quiz.questions.length;
+    const percentage = Math.round((score / total) * 100);
+
+    return { score, total, percentage}
+  }, [quiz, answers])
 
   const chartConfig = {
     score: {
