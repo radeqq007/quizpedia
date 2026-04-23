@@ -5,7 +5,6 @@ import { useQuizStore } from "@/hooks/useQuizStore";
 import { cn } from "@/lib/utils";
 import { keyMap } from "@/constants/constants";
 
-
 export const Quiz = () => {
   const { quiz, curQuestion, selectAnswer, nextQuestion } = useQuizStore();
   const navigate = useNavigate();

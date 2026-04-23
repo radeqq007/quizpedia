@@ -59,9 +59,7 @@ export const SearchBar = ({
   return (
     <form
       className="w-full flex items-end gap-5"
-      onSubmit={(e) =>
-        handleSelect(searchResults[0] ?? "", e)
-      }
+      onSubmit={(e) => handleSelect(searchResults[0] ?? "", e)}
     >
       <Field>
         <span className="flex flex-col gap-2">

@@ -28,12 +28,14 @@ export const Result = () => {
   if (!quiz) return null;
 
   const { score, total, percentage } = useMemo(() => {
-    const score = quiz.questions.filter((q, i) => answers[i] === q.answer).length;
+    const score = quiz.questions.filter(
+      (q, i) => answers[i] === q.answer,
+    ).length;
     const total = quiz.questions.length;
     const percentage = Math.round((score / total) * 100);
 
-    return { score, total, percentage}
-  }, [quiz, answers])
+    return { score, total, percentage };
+  }, [quiz, answers]);
 
   const chartConfig = {
     score: {
