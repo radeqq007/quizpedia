@@ -44,11 +44,12 @@ export const Quiz = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [quiz, curQuestion, selectAnswer, nextQuestion]);
 
-  if (!quiz || curQuestion >= quiz.questions.length) return null;
-
   useEffect(() => {
+    if (!quiz || curQuestion >= quiz.questions.length) return;
     document.title = `${quiz.questions[curQuestion].question} - Quizpedia`;
   }, [quiz, curQuestion]);
+
+  if (!quiz || curQuestion >= quiz.questions.length) return null;
 
   return (
     <div className="flex flex-col gap-10 items-center w-full lg:w-2/3 xl:w-1/3 lg:min-w-150 m-auto p-8">
