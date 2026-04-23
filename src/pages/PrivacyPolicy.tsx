@@ -79,7 +79,7 @@ export const PrivacyPolicy = () => {
             When you search for a topic, your query is sent directly from your browser to the Wikipedia API (en.wikipedia.org or pl.wikipedia.org)
             Quizpedia does not proxy or log these requests.
             Wikipedia's privacy policy applies:
-            <a href="foundation.wikimedia.org/wiki/Privacy_policy" target="_blank" rel="noopener" className="underline ml-1">
+            <a href="https://foundation.wikimedia.org/wiki/Privacy_policy" target="_blank" rel="noopener" className="underline ml-1">
               foundation.wikimedia.org/wiki/Privacy_policy
             </a>
             .
@@ -160,7 +160,7 @@ export const PrivacyPolicy = () => {
             <td>Wikipedia API</td>
             <td>Article content</td>
             <td>
-              <a href="foundation.wikimedia.org/wiki/Privacy_policy" target="_blank" rel="noopener" className="underline">
+              <a href="https://foundation.wikimedia.org/wiki/Privacy_policy" target="_blank" rel="noopener" className="underline">
                 foundation.wikimedia.org/wiki/Privacy_policy
               </a>
             </td>
