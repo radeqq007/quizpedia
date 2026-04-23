@@ -53,7 +53,7 @@ export const SearchBar = ({
 
   const placeholder = useMemo(() => {
     const arr = exampleTopics[lang];
-    return arr[Math.floor(Math.random() * arr.length)] + "...";
+    return `${arr[Math.floor(Math.random() * arr.length)]}...`;
   }, [lang]);
 
   return (
