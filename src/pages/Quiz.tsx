@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { keyMap } from "@/constants/constants";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { cn } from "@/lib/utils";
-import { keyMap } from "@/constants/constants";
 
 export const Quiz = () => {
   const { quiz, curQuestion, selectAnswer, nextQuestion } = useQuizStore();

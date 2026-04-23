@@ -2,13 +2,13 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SearchBar } from "@/components/SearchBar";
+import { SummaryContent } from "@/components/SummaryContent";
 import { Button } from "@/components/ui/button";
 import { useQuiz } from "@/hooks/useQuiz";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { useWikipediaArticle } from "@/hooks/useWikipedia";
 import { cn } from "@/lib/utils";
 import type { Language } from "@/types";
-import { SummaryContent } from "@/components/SummaryContent";
 
 export const Home = () => {
   const [selected, setSelected] = useState<string>("");
