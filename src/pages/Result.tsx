@@ -21,15 +21,15 @@ export const Result = () => {
     if (!quiz) navigate("/");
   }, [quiz, navigate]);
 
+  useEffect(() => {
+    document.title = "Your Results - Quizpedia";
+  }, []);
+
   if (!quiz) return null;
 
   const score = quiz.questions.filter((q, i) => answers[i] === q.answer).length;
   const total = quiz.questions.length;
   const percentage = Math.round((score / total) * 100);
-
-  useEffect(() => {
-    document.title = "Your Results - Quizpedia";
-  }, []);
 
   const chartConfig = {
     score: {
