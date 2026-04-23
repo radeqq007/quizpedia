@@ -25,9 +25,9 @@ export const Result = () => {
     document.title = "Your Results - Quizpedia";
   }, []);
 
-  if (!quiz) return null;
-
   const { score, total, percentage } = useMemo(() => {
+    if (!quiz) return { score: 0, total: 0, percentage: 0 };
+
     const score = quiz.questions.filter(
       (q, i) => answers[i] === q.answer,
     ).length;
@@ -36,6 +36,8 @@ export const Result = () => {
 
     return { score, total, percentage };
   }, [quiz, answers]);
+
+  if (!quiz) return null;
 
   const chartConfig = {
     score: {
