@@ -2,35 +2,13 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SearchBar } from "@/components/SearchBar";
-import { SummarySkeleton } from "@/components/SummarySkeleton";
 import { Button } from "@/components/ui/button";
 import { useQuiz } from "@/hooks/useQuiz";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { useWikipediaArticle } from "@/hooks/useWikipedia";
 import { cn } from "@/lib/utils";
 import type { Language } from "@/types";
-
-type SummaryContentProps = {
-  isGenerating: boolean;
-  isFetching: boolean;
-  error: Error | null;
-  summary: string | undefined;
-};
-
-const SummaryContent = ({
-  isGenerating,
-  isFetching,
-  error,
-  summary,
-}: SummaryContentProps) => {
-  if (isGenerating || isFetching) return <SummarySkeleton />;
-  if (error?.message === "rate_limited")
-    return <p className="text-primary">Rate limit exceeded. Try again soon.</p>;
-  if (error)
-    return <p className="text-primary">Internal server error. Try again.</p>;
-
-  return <span>{summary}</span>;
-};
+import { SummaryContent } from "@/components/SummaryContent";
 
 export const Home = () => {
   const [selected, setSelected] = useState<string>("");
