@@ -1,5 +1,6 @@
 import { LucideSearch } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import { useMemo } from "react";
 import en from "@/assets/en.svg";
 import pl from "@/assets/pl.svg";
 import { SearchSuggestions } from "@/components/SearchSuggestions";
@@ -26,7 +27,6 @@ import { Spinner } from "@/components/ui/spinner";
 import { exampleTopics } from "@/constants/constants";
 import { useSearchBar } from "@/hooks/useSearchBar";
 import type { Language } from "@/types";
-import { useMemo } from "react";
 
 interface SearchBarProps {
   selected: string;

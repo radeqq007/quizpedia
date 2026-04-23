@@ -1,5 +1,5 @@
-import cat from "@/assets/cat.gif";
 import { useEffect } from "react";
+import cat from "@/assets/cat.gif";
 
 export const NotFound = () => {
   useEffect(() => {
