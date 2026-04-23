@@ -60,7 +60,7 @@ export const SearchBar = ({
     <form
       className="w-full flex items-end gap-5"
       onSubmit={(e) =>
-        handleSelect(searchResults.length > 0 ? searchResults[0] : "", e)
+        handleSelect(searchResults[0] ?? "", e)
       }
     >
       <Field>
