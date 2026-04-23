@@ -3,17 +3,8 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { cn } from "@/lib/utils";
+import { keyMap } from "@/constants/constants";
 
-const keyMap: Record<string, number> = {
-  "1": 0,
-  "2": 1,
-  "3": 2,
-  "4": 3,
-  a: 0,
-  b: 1,
-  c: 2,
-  d: 3,
-};
 
 export const Quiz = () => {
   const { quiz, curQuestion, selectAnswer, nextQuestion } = useQuizStore();

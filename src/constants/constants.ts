@@ -107,3 +107,14 @@ export const exampleTopics: Record<Language, string[]> = {
     "Apollo 11",
   ],
 };
+
+export const keyMap: Record<string, number> = {
+  "1": 0,
+  "2": 1,
+  "3": 2,
+  "4": 3,
+  a: 0,
+  b: 1,
+  c: 2,
+  d: 3,
+};
