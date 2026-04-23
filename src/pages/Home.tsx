@@ -24,11 +24,12 @@ const SummaryContent = ({
   summary,
 }: SummaryContentProps) => {
   if (isGenerating || isFetching) return <SummarySkeleton />;
-  else if (error?.message === "rate_limited")
+  if (error?.message === "rate_limited")
     return <p className="text-primary">Rate limit exceeded. Try again soon.</p>;
-  else if (error)
+  if (error)
     return <p className="text-primary">Internal server error. Try again.</p>;
-  else return <span>{summary}</span>;
+
+  return <span>{summary}</span>;
 };
 
 export const Home = () => {
