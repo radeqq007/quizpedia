@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Footer = () => {
   return (
     <div className="w-full h-10 py-10 sm:py-6 px-4 text-secondary-foreground flex flex-col sm:flex-row items-center sm:justify-between *:flex *:gap-4 mb-5 sm:mb-0">
@@ -17,6 +19,7 @@ export const Footer = () => {
       </span>
 
       <span>
+        <Link to="/privacy" className="underline">Privacy Policy</Link>
         <a
           href="https://github.com/radeqq007/quizpedia"
           target="_blank"
