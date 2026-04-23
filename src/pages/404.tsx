@@ -1,6 +1,11 @@
 import cat from "@/assets/cat.gif";
+import { useEffect } from "react";
 
 export const NotFound = () => {
+  useEffect(() => {
+    document.title = "404 Not Found - Quizpedia";
+  }, []);
+
   return (
     <div className="flex items-center justify-center flex-col">
       <img src={cat} alt="404 not found" className="w-60" />

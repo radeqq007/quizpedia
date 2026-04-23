@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SearchBar } from "@/components/SearchBar";
 import { Button } from "@/components/ui/button";
@@ -44,6 +44,12 @@ export const Home = () => {
 
   const navigate = useNavigate();
   const setQuiz = useQuizStore((s) => s.setQuiz);
+
+  useEffect(() => {
+    document.title = selected
+      ? `${selected} - Quizpedia`
+      : "Quizpedia - Quiz Yourself on Anything";
+  }, [selected]);
 
   return (
     <div className="flex flex-col gap-8 items-center w-full md:w-2/3 lg:w-1/3 lg:min-w-140 m-auto p-8">

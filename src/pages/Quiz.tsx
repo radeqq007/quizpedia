@@ -46,6 +46,10 @@ export const Quiz = () => {
 
   if (!quiz || curQuestion >= quiz.questions.length) return null;
 
+  useEffect(() => {
+    document.title = `${quiz.questions[curQuestion].question} - Quizpedia`;
+  }, [quiz, curQuestion]);
+
   return (
     <div className="flex flex-col gap-10 items-center w-full lg:w-2/3 xl:w-1/3 lg:min-w-150 m-auto p-8">
       <AnimatePresence mode="wait">

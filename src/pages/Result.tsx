@@ -27,6 +27,10 @@ export const Result = () => {
   const total = quiz.questions.length;
   const percentage = Math.round((score / total) * 100);
 
+  useEffect(() => {
+    document.title = "Your Results - Quizpedia";
+  }, []);
+
   const chartConfig = {
     score: {
       label: "Score %",
