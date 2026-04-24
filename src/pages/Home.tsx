@@ -1,6 +1,3 @@
-import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { SearchBar } from "@/components/SearchBar";
 import { SummaryContent } from "@/components/SummaryContent";
 import { Button } from "@/components/ui/button";
@@ -9,10 +6,15 @@ import { useQuizStore } from "@/hooks/useQuizStore";
 import { useWikipediaArticle } from "@/hooks/useWikipedia";
 import { cn } from "@/lib/utils";
 import type { Language } from "@/types";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const [selected, setSelected] = useState<string>("");
-  const [lang, setLang] = useState<Language>("en");
+  const [lang, setLang] = useState<Language>(
+    (localStorage.getItem("lang") as Language) ?? "en",
+  );
   const { data: articleData, isFetching } = useWikipediaArticle(selected, lang);
   const {
     data: quizData,
@@ -29,11 +31,16 @@ export const Home = () => {
       : "Quizpedia - Quiz Yourself on Anything";
   }, [selected]);
 
+  const handleLangChange = (language: Language) => {
+    setLang(language);
+    localStorage.setItem("lang", language);
+  };
+
   return (
     <div className="flex flex-col gap-8 items-center w-full md:w-2/3 lg:w-1/3 lg:min-w-140 m-auto p-8">
       <SearchBar
         lang={lang}
-        onLangChange={setLang}
+        onLangChange={handleLangChange}
         selected={selected}
         onSelect={setSelected}
       />
