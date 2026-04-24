@@ -1,6 +1,6 @@
 export const PrivacyPolicy = () => {
   return (
-    <div className="flex flex-col gap-5 w-1/3 leading-7">
+    <div className="flex flex-col gap-5 w-2/3 xl:w-1/3 leading-7">
       <div>
         <h2 className="text-3xl font-bold text-center">Privacy Policy</h2>
         <p><span className="font-semibold">Quizpedia</span> - <a href="https://quizpedia.pages.dev">https://quizpedia.pages.dev</a></p>
