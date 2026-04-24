@@ -6,7 +6,7 @@ export const Footer = () => {
       <span className="flex flex-col-reverse sm:flex-row justify-center items-center">
         © 2026
         <span className="text-center">
-          Made with ❤ by {" "}
+          Made with ❤ by{" "}
           <a
             href="https://github.com/radeqq007"
             target="_blank"
@@ -19,7 +19,9 @@ export const Footer = () => {
       </span>
 
       <span>
-        <Link to="/privacy" className="underline">Privacy Policy</Link>
+        <Link to="/privacy" className="underline">
+          Privacy Policy
+        </Link>
         <a
           href="https://github.com/radeqq007/quizpedia"
           target="_blank"
