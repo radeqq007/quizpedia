@@ -2,15 +2,15 @@ import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
-    <div className="w-full h-10 py-10 sm:py-6 px-4 text-secondary-foreground flex flex-col sm:flex-row items-center sm:justify-between *:flex *:gap-4 mb-5 sm:mb-0">
+    <div className="w-full h-10 sm:py-6 px-4 text-secondary-foreground flex flex-col-reverse sm:flex-row items-center sm:justify-between *:flex *:gap-1 sm:*:gap-4 mb-2 sm:mb-0">
       <span className="flex flex-col-reverse sm:flex-row justify-center items-center">
         © 2026
         <span className="text-center">
-          Made with ❤ by
+          Made with ❤ by {" "}
           <a
             href="https://github.com/radeqq007"
             target="_blank"
-            className="ml-2 underline"
+            className="underline"
             rel="noopener"
           >
             Radosław Kaczmarczyk
