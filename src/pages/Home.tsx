@@ -67,8 +67,9 @@ export const Home = () => {
           />
 
           <span className="w-full flex gap-2 justify-end mt-5">
-            <Button variant="secondary">Expand</Button>
+            <Button variant="secondary" disabled={!quizData} >Expand</Button>
             <Button
+              disabled={!quizData}
               onClick={() => {
                 if (!quizData) return;
                 setQuiz(quizData);
