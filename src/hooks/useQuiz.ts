@@ -18,7 +18,7 @@ const fetchQuiz = async (article: Article) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       articleTitle: article.title,
-    articleContent: article.content.slice(0, 6000),
+      articleContent: article.content.slice(0, 6000),
     }),
   });
 

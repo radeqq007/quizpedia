@@ -41,7 +41,12 @@ export const Home = () => {
 
   const queryClient = useQueryClient();
 
-  const { mutate: expandSummary, isPending: isExpanding, error: expandError, reset: resetExpand } = useExpandSummary();
+  const {
+    mutate: expandSummary,
+    isPending: isExpanding,
+    error: expandError,
+    reset: resetExpand,
+  } = useExpandSummary();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const handleExpand = () => {
@@ -53,14 +58,20 @@ export const Home = () => {
       },
       {
         onSuccess: (expanded) => {
-          queryClient.setQueryData(["quiz", articleData.title], { ...quizData, summary: expanded })
+          queryClient.setQueryData(["quiz", articleData.title], {
+            ...quizData,
+            summary: expanded,
+          });
           setIsExpanded(true);
-        }
+        },
       },
     );
-  }
+  };
 
-  useEffect(() => { setIsExpanded(false); resetExpand(); }, [selected]);
+  useEffect(() => {
+    setIsExpanded(false);
+    resetExpand();
+  }, [selected]);
 
   return (
     <div className="flex flex-col gap-8 items-center w-full md:w-2/3 lg:w-1/3 lg:min-w-140 m-auto p-8">
@@ -93,12 +104,12 @@ export const Home = () => {
           />
 
           <span className="w-full flex gap-2 justify-end mt-5">
-            <Button variant="secondary" disabled={!quizData || isExpanded || isExpanding} onClick={handleExpand}>
-              {
-                expandError ? "Error."
-                : isExpanding ? <Spinner />
-                : "Expand"
-              }
+            <Button
+              variant="secondary"
+              disabled={!quizData || isExpanded || isExpanding}
+              onClick={handleExpand}
+            >
+              {expandError ? "Error." : isExpanding ? <Spinner /> : "Expand"}
             </Button>
             <Button
               disabled={!quizData}
