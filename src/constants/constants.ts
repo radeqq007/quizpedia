@@ -118,3 +118,6 @@ export const keyMap: Record<string, number> = {
   c: 2,
   d: 3,
 };
+
+export const WORKER_URL = import.meta.env.VITE_BACKEND_URL;
+

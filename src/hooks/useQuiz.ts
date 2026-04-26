@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+import { WORKER_URL } from "@/constants/constants";
 import type { UseQueryResult } from "@tanstack/react-query";
 import type { QuizData, Article } from "@/types";
-
-const WORKER_URL = import.meta.env.VITE_BACKEND_URL;
 
 export function useQuiz(article?: Article): UseQueryResult<QuizData, Error> {
   return useQuery<QuizData>({
@@ -27,3 +26,4 @@ const fetchQuiz = async (article: Article) => {
 
   return res.json();
 };
+

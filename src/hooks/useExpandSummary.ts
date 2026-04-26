@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
+import { WORKER_URL } from "@/constants/constants";
 import type { Article } from "@/types";
 
-const WORKER_URL = import.meta.env.VITE_BACKEND_URL;
 
 type ExpandParams = {
   article: Article;
