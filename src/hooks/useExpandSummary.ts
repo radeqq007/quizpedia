@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import type { Article } from "@/hooks/useWikipedia";
+import type { Article } from "@/types";
 
 const WORKER_URL = import.meta.env.VITE_BACKEND_URL;
 

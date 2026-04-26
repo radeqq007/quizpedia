@@ -1,18 +1,8 @@
-import type { Article } from "@/hooks/useWikipedia";
-import { type UseQueryResult, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
+import type { UseQueryResult } from "@tanstack/react-query";
+import type { QuizData, Article } from "@/types";
 
 const WORKER_URL = import.meta.env.VITE_BACKEND_URL;
-
-export type Question = {
-  question: string;
-  options: string[];
-  answer: string;
-};
-
-export type QuizData = {
-  summary: string;
-  questions: Question[];
-};
 
 export function useQuiz(article?: Article): UseQueryResult<QuizData, Error> {
   return useQuery<QuizData>({
