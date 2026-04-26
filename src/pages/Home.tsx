@@ -1,11 +1,14 @@
 import { SearchBar } from "@/components/SearchBar";
 import { SummaryContent } from "@/components/SummaryContent";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
+import { useExpandSummary } from "@/hooks/useExpandSummary";
 import { useQuiz } from "@/hooks/useQuiz";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { useWikipediaArticle } from "@/hooks/useWikipedia";
 import { cn } from "@/lib/utils";
 import type { Language } from "@/types";
+import { useQueryClient } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -35,6 +38,29 @@ export const Home = () => {
     setLang(language);
     localStorage.setItem("lang", language);
   };
+
+  const queryClient = useQueryClient();
+
+  const { mutate: expandSummary, isPending: isExpanding, error: expandError, reset: resetExpand } = useExpandSummary();
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
+  const handleExpand = () => {
+    if (!articleData || !quizData) return;
+    expandSummary(
+      {
+        article: articleData,
+        summary: quizData.summary,
+      },
+      {
+        onSuccess: (expanded) => {
+          queryClient.setQueryData(["quiz", articleData.title], { ...quizData, summary: expanded })
+          setIsExpanded(true);
+        }
+      },
+    );
+  }
+
+  useEffect(() => { setIsExpanded(false); resetExpand(); }, [selected]);
 
   return (
     <div className="flex flex-col gap-8 items-center w-full md:w-2/3 lg:w-1/3 lg:min-w-140 m-auto p-8">
@@ -67,7 +93,13 @@ export const Home = () => {
           />
 
           <span className="w-full flex gap-2 justify-end mt-5">
-            <Button variant="secondary" disabled={!quizData} >Expand</Button>
+            <Button variant="secondary" disabled={!quizData || isExpanded || isExpanding} onClick={handleExpand}>
+              {
+                expandError ? "Error."
+                : isExpanding ? <Spinner />
+                : "Expand"
+              }
+            </Button>
             <Button
               disabled={!quizData}
               onClick={() => {
