@@ -1,8 +1,4 @@
-import { LucideArrowLeft, LucideRotateCcw } from "lucide-react";
-import { motion } from "motion/react";
-import { useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
+import { ShareButton } from "@/components/ShareButton";
 import { Button } from "@/components/ui/button";
 import type { ChartConfig } from "@/components/ui/chart";
 import {
@@ -12,6 +8,11 @@ import {
 } from "@/components/ui/chart";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { cn } from "@/lib/utils";
+import { LucideArrowLeft, LucideRotateCcw } from "lucide-react";
+import { motion } from "motion/react";
+import { useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 
 export const Result = () => {
   const { quiz, answers, reset, retry } = useQuizStore();
@@ -60,7 +61,10 @@ export const Result = () => {
   return (
     <div className="flex flex-col gap-10 items-center w-full lg:w-2/3 xl:w-1/3 lg:min-w-150 m-auto p-8">
       <div className="border border-input rounded-md px-6 py-4 w-full min-h-40 flex flex-col gap-10">
-        <h2 className="text-2xl font-bold">Result</h2>
+        <span className="flex justify-between items-center">
+          <h2 className="text-2xl font-bold">Result</h2>
+          <ShareButton topic="PLACEHOLDER" score={score} total={total} />
+        </span>
         <ChartContainer config={chartConfig} className="h-40 w-full">
           <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -97,6 +101,8 @@ export const Result = () => {
             {percentage}%
           </span>
         </div>
+
+
       </div>
       {quiz?.questions.map((q, i) => (
         <motion.div
