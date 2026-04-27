@@ -40,12 +40,12 @@ export const SharePopup = ({ imgUrl }: SharePopupProps) => {
 
       <span className="flex justify-end">
         <a download="quiz-score.png" href={imgUrl}>
-          <Button variant="ghost" size="icon">
+          <Button disabled={!imgUrl} variant="ghost" size="icon">
             <LucideDownload />
           </Button>
         </a>
 
-        <Button variant="ghost" size="icon" onClick={handleCopy}>
+        <Button disabled={!imgUrl} variant="ghost" size="icon" onClick={handleCopy}>
           {copied ? <LucideCheck /> : <LucideCopy />}
         </Button>
       </span>
