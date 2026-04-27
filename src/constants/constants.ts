@@ -120,4 +120,3 @@ export const keyMap: Record<string, number> = {
 };
 
 export const WORKER_URL = import.meta.env.VITE_BACKEND_URL;
-

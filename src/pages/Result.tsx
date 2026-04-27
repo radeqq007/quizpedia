@@ -1,3 +1,8 @@
+import { LucideArrowLeft, LucideRotateCcw } from "lucide-react";
+import { motion } from "motion/react";
+import { useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import { ShareButton } from "@/components/ShareButton";
 import { Button } from "@/components/ui/button";
 import type { ChartConfig } from "@/components/ui/chart";
@@ -8,11 +13,6 @@ import {
 } from "@/components/ui/chart";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { cn } from "@/lib/utils";
-import { LucideArrowLeft, LucideRotateCcw } from "lucide-react";
-import { motion } from "motion/react";
-import { useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 
 export const Result = () => {
   const { quiz, answers, reset, retry } = useQuizStore();
@@ -101,8 +101,6 @@ export const Result = () => {
             {percentage}%
           </span>
         </div>
-
-
       </div>
       {quiz?.questions.map((q, i) => (
         <motion.div

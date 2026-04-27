@@ -1,3 +1,5 @@
+import { AnimatePresence } from "motion/react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { PageTransition } from "@/components/PageTransition";
@@ -6,8 +8,6 @@ import { Home } from "@/pages/Home";
 import { PrivacyPolicy } from "@/pages/PrivacyPolicy";
 import { Quiz } from "@/pages/Quiz";
 import { Result } from "@/pages/Result";
-import { AnimatePresence } from "motion/react";
-import { Route, Routes, useLocation } from "react-router-dom";
 
 function App() {
   const location = useLocation();

@@ -2,7 +2,6 @@ import { useMutation } from "@tanstack/react-query";
 import { WORKER_URL } from "@/constants/constants";
 import type { Article } from "@/types";
 
-
 type ExpandParams = {
   article: Article;
   summary: string;

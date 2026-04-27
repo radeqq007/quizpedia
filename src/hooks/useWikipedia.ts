@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import type { Language, Article } from "@/types";
+import type { Article, Language } from "@/types";
 
 export function useWikipediaSearch(query: string, lang: Language) {
   return useQuery({
