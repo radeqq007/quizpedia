@@ -63,7 +63,7 @@ export const Result = () => {
       <div className="border border-input rounded-md px-6 py-4 w-full min-h-40 flex flex-col gap-10">
         <span className="flex justify-between items-center">
           <h2 className="text-2xl font-bold">Result</h2>
-          <ShareButton topic="PLACEHOLDER" score={score} total={total} />
+          <ShareButton topic={quiz.topic} score={score} total={total} />
         </span>
         <ChartContainer config={chartConfig} className="h-40 w-full">
           <LineChart data={chartData}>

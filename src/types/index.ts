@@ -7,6 +7,7 @@ export type Question = {
 };
 
 export type QuizData = {
+  topic: string;
   summary: string;
   questions: Question[];
 };

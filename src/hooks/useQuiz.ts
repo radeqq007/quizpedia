@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
 import { WORKER_URL } from "@/constants/constants";
+import type { Article, QuizData } from "@/types";
 import type { UseQueryResult } from "@tanstack/react-query";
-import type { QuizData, Article } from "@/types";
+import { useQuery } from "@tanstack/react-query";
 
 export function useQuiz(article?: Article): UseQueryResult<QuizData, Error> {
   return useQuery<QuizData>({
@@ -11,7 +11,7 @@ export function useQuiz(article?: Article): UseQueryResult<QuizData, Error> {
   });
 }
 
-const fetchQuiz = async (article: Article) => {
+const fetchQuiz = async (article: Article): Promise<QuizData> => {
   const res = await fetch(WORKER_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -24,6 +24,7 @@ const fetchQuiz = async (article: Article) => {
   if (res.status === 429) throw new Error("rate_limited");
   if (!res.ok) throw new Error("Failed to generate quiz");
 
-  return res.json();
+  const data = await res.json()
+  return { ...data, topic: article.title };
 };
 
