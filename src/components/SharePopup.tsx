@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { LucideCheck, LucideCopy, LucideCopyCheck, LucideDownload } from "lucide-react";
+import { LucideCheck, LucideCopy, LucideDownload } from "lucide-react";
 import { useState } from "react";
 
 interface SharePopupProps {
