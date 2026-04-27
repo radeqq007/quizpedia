@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import { Header } from "./Header";
 
 interface ShareCardProps {
@@ -7,7 +7,7 @@ interface ShareCardProps {
   total: number;
 }
 
-export const ShareCard = React.forwardRef<HTMLDivElement, ShareCardProps>(
+export const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(
   ({ topic, score, total }: ShareCardProps, ref) => {
     return (
       <div
