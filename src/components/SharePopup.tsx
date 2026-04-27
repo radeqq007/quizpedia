@@ -16,14 +16,14 @@ export const SharePopup = ({ imgUrl }: SharePopupProps) => {
       const res = await fetch(imgUrl);
       const blob = await res.blob();
       const item = new ClipboardItem({ [blob.type]: blob });
-      
+
       await navigator.clipboard.write([item]);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Clipboard write failed:", err);
     }
-  }
+  };
 
   return (
     <>
@@ -33,9 +33,7 @@ export const SharePopup = ({ imgUrl }: SharePopupProps) => {
         </DialogTitle>
       </DialogHeader>
       <div className="w-full aspect-16/11 *:h-full *:w-full rounded-2xl overflow-hidden">
-        {
-          imgUrl ? <img src={imgUrl} alt="Score card" /> : <Skeleton />
-        }
+        {imgUrl ? <img src={imgUrl} alt="Score card" /> : <Skeleton />}
       </div>
 
       <span className="flex justify-end">
@@ -45,7 +43,12 @@ export const SharePopup = ({ imgUrl }: SharePopupProps) => {
           </Button>
         </a>
 
-        <Button disabled={!imgUrl} variant="ghost" size="icon" onClick={handleCopy}>
+        <Button
+          disabled={!imgUrl}
+          variant="ghost"
+          size="icon"
+          onClick={handleCopy}
+        >
           {copied ? <LucideCheck /> : <LucideCopy />}
         </Button>
       </span>
