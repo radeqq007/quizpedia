@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Header } from "./Header";
+import { Header } from "@/components/Header";
 
 interface ShareCardProps {
   topic: string;
