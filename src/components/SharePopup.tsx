@@ -12,7 +12,7 @@ export const SharePopup = ({ imgUrl }: SharePopupProps) => {
           Share your score!
         </DialogTitle>
       </DialogHeader>
-      <img src={imgUrl} className="rounded-2xl" />
+      <img src={imgUrl} alt="Score card" className="rounded-2xl" />
     </>
   );
 };
