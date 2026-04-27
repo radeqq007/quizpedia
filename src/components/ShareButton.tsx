@@ -4,11 +4,7 @@ import { useRef, useState } from "react";
 import { ShareCard } from "@/components/ShareCard";
 import { SharePopup } from "@/components/SharePopup";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 interface ShareButtonProps {
   topic: string;
