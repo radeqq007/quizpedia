@@ -1,8 +1,8 @@
+import { LucideCheck, LucideCopy, LucideDownload } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Skeleton } from "@/components/ui/skeleton";
-import { LucideCheck, LucideCopy, LucideDownload } from "lucide-react";
-import { useState } from "react";
 
 interface SharePopupProps {
   imgUrl: string;

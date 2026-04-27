@@ -1,10 +1,10 @@
+import { toPng } from "html-to-image";
+import { LucideShare2 } from "lucide-react";
+import { useRef, useState } from "react";
 import { ShareCard } from "@/components/ShareCard";
 import { SharePopup } from "@/components/SharePopup";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { toPng } from "html-to-image";
-import { LucideShare2 } from "lucide-react";
-import { useRef, useState } from "react";
 
 interface ShareButtonProps {
   topic: string;

@@ -68,6 +68,7 @@ export const Home = () => {
     );
   };
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: selected is used as a trigger
   useEffect(() => {
     setIsExpanded(false);
     resetExpand();
