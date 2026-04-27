@@ -10,10 +10,16 @@
     "lint": "biome check .",
     "fix": "biome check . --write",
     "format": "biome format --write",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky"
   },
   "author": "Radosław Kaczmarczyk",
   "license": "MIT",
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx,json,css,md}": [
+      "biome check --write"
+    ]
+  },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",
     "@tailwindcss/vite": "^4.2.4",
@@ -42,6 +48,8 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
     "globals": "^17.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "typescript": "~6.0.2",
     "vite": "^8.0.10"
   }
