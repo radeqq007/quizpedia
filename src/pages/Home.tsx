@@ -71,7 +71,7 @@ export const Home = () => {
   useEffect(() => {
     setIsExpanded(false);
     resetExpand();
-  }, [selected]);
+  }, [selected, resetExpand]);
 
   return (
     <div className="flex flex-col gap-8 items-center w-full md:w-2/3 lg:w-1/3 lg:min-w-140 m-auto p-8">
