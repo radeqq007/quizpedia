@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Skeleton } from "@/components/ui/skeleton";
 import { LucideCheck, LucideCopy, LucideDownload } from "lucide-react";
 import { useState } from "react";
 
@@ -31,7 +32,11 @@ export const SharePopup = ({ imgUrl }: SharePopupProps) => {
           Share your score!
         </DialogTitle>
       </DialogHeader>
-      <img src={imgUrl} alt="Score card" className="rounded-2xl" />
+      <div className="w-full aspect-16/11 *:h-full *:w-full rounded-2xl overflow-hidden">
+        {
+          imgUrl ? <img src={imgUrl} alt="Score card" /> : <Skeleton />
+        }
+      </div>
 
       <span className="flex justify-end">
         <a download="quiz-score.png" href={imgUrl}>
