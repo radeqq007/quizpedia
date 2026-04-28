@@ -51,7 +51,6 @@ const fetchWikiArticle = async (
   url.searchParams.set("action", "query");
   url.searchParams.set("prop", "extracts|info");
   url.searchParams.set("explaintext", "true");
-  // url.searchParams.set("inprop", "url");
   url.searchParams.set("titles", title);
   url.searchParams.set("origin", "*");
   url.searchParams.set("format", "json");
