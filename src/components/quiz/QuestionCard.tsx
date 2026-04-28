@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import { AnswerButton } from "@/components/AnswerButton";
+import { AnswerButton } from "@/components/quiz/AnswerButton";
 import type { Question } from "@/types";
 
 interface QuestionCardProps {

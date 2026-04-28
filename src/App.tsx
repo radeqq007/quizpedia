@@ -1,8 +1,8 @@
 import { AnimatePresence } from "motion/react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
-import { PageTransition } from "@/components/PageTransition";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { PageTransition } from "@/components/layout/PageTransition";
 import { NotFound } from "@/pages/404";
 import { Home } from "@/pages/Home";
 import { PrivacyPolicy } from "@/pages/PrivacyPolicy";

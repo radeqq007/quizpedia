@@ -1,8 +1,8 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SearchBar } from "@/components/SearchBar";
-import { Summary } from "@/components/Summary";
+import { SearchBar } from "@/components/search/SearchBar";
+import { Summary } from "@/components/summary/Summary";
 import { useExpandSummary } from "@/hooks/useExpandSummary";
 import { useQuiz } from "@/hooks/useQuiz";
 import { useQuizStore } from "@/hooks/useQuizStore";

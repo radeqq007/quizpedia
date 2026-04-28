@@ -1,4 +1,4 @@
-import { SummarySkeleton } from "@/components/SummarySkeleton";
+import { SummarySkeleton } from "@/components/summary/SummarySkeleton";
 
 type SummaryContentProps = {
   isGenerating: boolean;

@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useMemo } from "react";
 import en from "@/assets/en.svg";
 import pl from "@/assets/pl.svg";
-import { SearchSuggestions } from "@/components/SearchSuggestions";
+import { SearchSuggestions } from "@/components/search/SearchSuggestions";
 import { Field, FieldLabel } from "@/components/ui/field";
 import {
   InputGroup,

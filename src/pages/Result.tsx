@@ -1,8 +1,8 @@
 import { LucideArrowLeft, LucideRotateCcw } from "lucide-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { QuestionResult } from "@/components/QuestionResult";
-import { ResultSummary } from "@/components/ResultSummary";
+import { QuestionResult } from "@/components/summary/QuestionResult";
+import { ResultSummary } from "@/components/summary/ResultSummary";
 import { Button } from "@/components/ui/button";
 import { useQuizStore } from "@/hooks/useQuizStore";
 

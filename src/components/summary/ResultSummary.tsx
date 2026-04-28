@@ -1,5 +1,5 @@
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
-import { ShareButton } from "@/components/ShareButton";
+import { ShareButton } from "@/components/share/ShareButton";
 import type { ChartConfig } from "@/components/ui/chart";
 import {
   ChartContainer,

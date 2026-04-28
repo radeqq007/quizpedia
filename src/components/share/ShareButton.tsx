@@ -1,8 +1,8 @@
 import { toPng } from "html-to-image";
 import { LucideShare2 } from "lucide-react";
 import { useRef, useState } from "react";
-import { ShareCard } from "@/components/ShareCard";
-import { SharePopup } from "@/components/SharePopup";
+import { ShareCard } from "@/components/share/ShareCard";
+import { SharePopup } from "@/components/share/SharePopup";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 

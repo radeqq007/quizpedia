@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import { SummaryContent } from "@/components/SummaryContent";
+import { SummaryContent } from "@/components/summary/SummaryContent";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { QuestionCard } from "@/components/QuestionCard";
-import { QuestionIndicators } from "@/components/QuestionIndicators";
+import { QuestionCard } from "@/components/quiz/QuestionCard";
+import { QuestionIndicators } from "@/components/quiz/QuestionIndicators";
 import { useQuizKeyboard } from "@/hooks/useQuizKeyboard";
 import { useQuizStore } from "@/hooks/useQuizStore";
 
