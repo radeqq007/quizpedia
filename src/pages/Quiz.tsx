@@ -1,7 +1,7 @@
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AnswerButton } from "@/components/AnswerButton";
+import { QuestionCard } from "@/components/QuestionCard";
 import { useQuizKeyboard } from "@/hooks/useQuizKeyboard";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { cn } from "@/lib/utils";
@@ -28,33 +28,14 @@ export const Quiz = () => {
 
   return (
     <div className="flex flex-col gap-10 items-center w-full lg:w-2/3 xl:w-1/3 lg:min-w-150 m-auto p-8">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={curQuestion}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -20 }}
-          transition={{ duration: 0.1, ease: "easeInOut" }}
-          className="border border-input rounded-md px-6 py-4 w-full min-h-40 flex flex-col gap-10"
-        >
-          <h2 className="text-2xl font-semibold text-center">
-            {quiz?.questions[curQuestion].question}
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-fr justify-between gap-4">
-            {quiz?.questions[curQuestion].options.map((option, idx) => (
-              <AnswerButton
-                key={`${option}`}
-                option={option}
-                idx={idx}
-                onClick={() => {
-                  selectAnswer(curQuestion, option);
-                  nextQuestion();
-                }}
-              />
-            ))}
-          </div>
-        </motion.div>
-      </AnimatePresence>
+      <QuestionCard
+        question={quiz?.questions[curQuestion]}
+        onSelect={(option: string) => {
+          selectAnswer(curQuestion, option);
+          nextQuestion();
+        }}
+      />
+
       <div className="flex gap-2 m-auto">
         {quiz?.questions.map((q, idx) => (
           <span
