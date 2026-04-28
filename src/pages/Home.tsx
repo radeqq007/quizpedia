@@ -81,14 +81,18 @@ export const Home = () => {
 
       <Summary
         selected={selected}
-        quizData={quizData}
-        quizError={quizError}
-        isGenerating={isGenerating}
-        isFetching={isFetching}
-        isExpanded={isExpanded}
-        isExpanding={isExpanding}
-        expandError={expandError}
-        onExpand={handleExpand}
+        quiz={{
+          data: quizData,
+          isGenerating,
+          isFetchingArticle: isFetching,
+          error: quizError,
+        }}
+        expansion={{
+          isExpanded,
+          isPending: isExpanding,
+          error: expandError,
+          onExpand: handleExpand,
+        }}
         onStart={() => {
           if (!quizData) return;
           setQuiz(quizData);

@@ -7,27 +7,25 @@ import type { QuizData } from "@/types";
 
 interface SummaryProps {
   selected: string;
-  quizData: QuizData | undefined;
-  quizError: Error | null;
-  isGenerating: boolean;
-  isFetching: boolean;
-  isExpanded: boolean;
-  isExpanding: boolean;
-  expandError: Error | null;
-  onExpand: () => void;
+  quiz: {
+    data?: QuizData;
+    isGenerating: boolean;
+    isFetchingArticle: boolean;
+    error: Error | null;
+  };
+  expansion: {
+    isExpanded: boolean;
+    isPending: boolean;
+    error: Error | null;
+    onExpand: () => void;
+  };
   onStart: () => void;
 }
 
 export const Summary = ({
   selected,
-  quizData,
-  isGenerating,
-  isFetching,
-  quizError,
-  isExpanded,
-  isExpanding,
-  expandError,
-  onExpand,
+  quiz,
+  expansion,
   onStart,
 }: SummaryProps) => {
   return (
@@ -46,21 +44,27 @@ export const Summary = ({
         <h2 className="text-2xl font-bold">Summary</h2>
 
         <SummaryContent
-          isGenerating={isGenerating}
-          isFetching={isFetching}
-          error={quizError}
-          summary={quizData?.summary}
+          isGenerating={quiz.isGenerating}
+          isFetching={quiz.isFetchingArticle}
+          error={quiz.error}
+          summary={quiz.data?.summary}
         />
 
         <span className="w-full flex gap-2 justify-end mt-5">
           <Button
             variant="secondary"
-            disabled={!quizData || isExpanded || isExpanding}
-            onClick={onExpand}
+            disabled={!quiz.data || expansion.isExpanded || expansion.isPending}
+            onClick={expansion.onExpand}
           >
-            {expandError ? "Error." : isExpanding ? <Spinner /> : "Expand"}
+            {expansion.error ? (
+              "Error."
+            ) : expansion.isPending ? (
+              <Spinner />
+            ) : (
+              "Expand"
+            )}
           </Button>
-          <Button disabled={!quizData} onClick={onStart}>
+          <Button disabled={!quiz.data} onClick={onStart}>
             Start
           </Button>
         </span>
