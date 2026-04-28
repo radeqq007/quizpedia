@@ -1,9 +1,8 @@
-import { LucideArrowLeft, LucideRotateCcw } from "lucide-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { QuestionResult } from "@/components/summary/QuestionResult";
+import { ResultActions } from "@/components/summary/ResultActions";
 import { ResultSummary } from "@/components/summary/ResultSummary";
-import { Button } from "@/components/ui/button";
 import { useQuizStore } from "@/hooks/useQuizStore";
 
 export const Result = () => {
@@ -28,32 +27,16 @@ export const Result = () => {
         <QuestionResult key={`${q}`} question={q} idx={i} answer={answers[i]} />
       ))}
 
-      <div className="flex justify-end w-full gap-4">
-        <Button
-          size="lg"
-          variant="secondary"
-          className="group"
-          onClick={() => {
-            retry();
-            navigate("/quiz");
-          }}
-        >
-          <LucideRotateCcw className="group-hover:-rotate-20 transition-transform" />
-          Try again
-        </Button>
-
-        <Button
-          size="lg"
-          className="group"
-          onClick={() => {
-            reset();
-            navigate("/");
-          }}
-        >
-          <LucideArrowLeft className="group-hover:-translate-x-1 transition-transform" />
-          Try a different quiz
-        </Button>
-      </div>
+      <ResultActions
+        onTryAgain={() => {
+          retry();
+          navigate("/quiz");
+        }}
+        onTryDifferent={() => {
+          reset();
+          navigate("/");
+        }}
+      />
     </div>
   );
 };
