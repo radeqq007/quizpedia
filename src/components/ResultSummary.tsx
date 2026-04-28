@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import { ShareButton } from "@/components/ShareButton";
 import type { ChartConfig } from "@/components/ui/chart";
@@ -7,6 +6,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { useQuizResults } from "@/hooks/useQuizResults";
 import type { QuizData } from "@/types";
 
 interface ResultSummaryProps {
@@ -14,35 +14,17 @@ interface ResultSummaryProps {
   answers: Record<number, string>;
 }
 
+const chartConfig = {
+  score: {
+    label: "Score %",
+    color: "var(--chart-1)",
+  },
+} satisfies ChartConfig;
+
 export const ResultSummary = ({ quiz, answers }: ResultSummaryProps) => {
-  const { score, total, percentage } = useMemo(() => {
-    if (!quiz) return { score: 0, total: 0, percentage: 0 };
-
-    const score = quiz.questions.filter(
-      (q, i) => answers[i] === q.answer,
-    ).length;
-    const total = quiz.questions.length;
-    const percentage = Math.round((score / total) * 100);
-
-    return { score, total, percentage };
-  }, [quiz, answers]);
-
-  const chartConfig = {
-    score: {
-      label: "Score %",
-      color: "var(--chart-1)",
-    },
-  } satisfies ChartConfig;
-
-  const chartData = quiz.questions.map((_, i) => {
-    const correctSoFar = quiz.questions
-      .slice(0, i + 1)
-      .filter((qq, j) => answers[j] === qq.answer).length;
-
-    return {
-      question: `Q${i + 1}`,
-      score: Math.round((correctSoFar / (i + 1)) * 100),
-    };
+  const { score, total, percentage, chartData } = useQuizResults({
+    quiz,
+    answers,
   });
 
   return (
