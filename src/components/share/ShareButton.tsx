@@ -3,7 +3,6 @@ import { LucideShare2 } from "lucide-react";
 import { useRef, useState } from "react";
 import { ShareCard } from "@/components/share/ShareCard";
 import { SharePopup } from "@/components/share/SharePopup";
-import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 interface ShareButtonProps {
@@ -30,15 +29,16 @@ export const ShareButton = ({ topic, score, total }: ShareButtonProps) => {
   return (
     <>
       <Dialog>
-        <DialogTrigger>
-          <Button
-            size="icon-lg"
-            aria-label="Share the result."
-            variant="ghost"
-            onClick={handleGenerateImage}
-          >
-            <LucideShare2 aria-hidden="true" focusable="false" />
-          </Button>
+        <DialogTrigger
+          aria-label="Share the result."
+          className="h-5 aspect-square cursor-pointer"
+          onClick={handleGenerateImage}
+        >
+          <LucideShare2
+            aria-hidden="true"
+            focusable="false"
+            className="h-full w-full"
+          />
         </DialogTrigger>
 
         <DialogContent className="flex flex-col gap-3">
