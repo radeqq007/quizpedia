@@ -1,8 +1,8 @@
 import { LucideArrowLeft, LucideRotateCcw } from "lucide-react";
-import { motion } from "motion/react";
 import { useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
+import { QuestionResult } from "@/components/QuestionResult";
 import { ShareButton } from "@/components/ShareButton";
 import { Button } from "@/components/ui/button";
 import type { ChartConfig } from "@/components/ui/chart";
@@ -12,7 +12,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { useQuizStore } from "@/hooks/useQuizStore";
-import { cn } from "@/lib/utils";
 
 export const Result = () => {
   const { quiz, answers, reset, retry } = useQuizStore();
@@ -103,35 +102,7 @@ export const Result = () => {
         </div>
       </div>
       {quiz?.questions.map((q, i) => (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.09 }}
-          viewport={{ once: true }}
-          key={q.question}
-          className="border border-input rounded-md px-6 py-4 w-full flex flex-col gap-2"
-        >
-          <h3 className="text-xl font-bold">
-            {i + 1}. {q.question}
-          </h3>
-          <span className="flex flex-col gap-2">
-            {q.options.map((opt) => (
-              <span
-                className={cn(
-                  "border px-4 py-2 rounded-lg",
-                  quiz.questions[i].answer === opt &&
-                    "border-green-400 bg-green-400/30",
-                  answers[i] === opt &&
-                    quiz.questions[i].answer !== opt &&
-                    "border-red-600/75 bg-red-700/30",
-                )}
-                key={opt}
-              >
-                {opt}
-              </span>
-            ))}
-          </span>
-        </motion.div>
+        <QuestionResult key={`${q}`} question={q} idx={i} answer={answers[i]} />
       ))}
 
       <div className="flex justify-end w-full gap-4">
