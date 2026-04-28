@@ -24,7 +24,7 @@ export const QuestionCard = ({ question, onSelect }: QuestionCardProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-fr justify-between gap-4">
           {question.options.map((option, idx) => (
             <AnswerButton
-              key={`${option}`}
+              key={option}
               option={option}
               idx={idx}
               onClick={() => onSelect(option)}
