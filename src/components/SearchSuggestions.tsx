@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -43,7 +44,7 @@ export const SearchSuggestions = ({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ delay: idx / 10 }}
-              className={idx === 3 ? "hidden sm:inline" : ""} // display only 3 suggestions on mobile
+              className={clsx({ "hidden sm:inline": idx === 3 })} // display only 3 suggestions on mobile
             >
               <Button
                 key={suggestion}
