@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { keyMap } from "@/constants/constants";
+import { useQuizKeyboard } from "@/hooks/useQuizKeyboard";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { cn } from "@/lib/utils";
 
@@ -17,27 +17,11 @@ export const Quiz = () => {
   }, [quiz, curQuestion, navigate]);
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!quiz || curQuestion >= quiz.questions.length) return;
-
-      const options = quiz.questions[curQuestion].options;
-
-      const idx = keyMap[e.key.toLowerCase()];
-
-      if (idx === undefined) return;
-
-      selectAnswer(curQuestion, options[idx]);
-      nextQuestion();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [quiz, curQuestion, selectAnswer, nextQuestion]);
-
-  useEffect(() => {
     if (!quiz || curQuestion >= quiz.questions.length) return;
     document.title = `${quiz.questions[curQuestion].question} - Quizpedia`;
   }, [quiz, curQuestion]);
+
+  useQuizKeyboard({ quiz, curQuestion, selectAnswer, nextQuestion });
 
   if (!quiz || curQuestion >= quiz.questions.length) return null;
 
