@@ -65,7 +65,7 @@ export const Result = () => {
           <h2 className="text-2xl font-bold">Result</h2>
           <ShareButton topic={quiz.topic} score={score} total={total} />
         </span>
-        <ChartContainer config={chartConfig} className="h-40 w-full">
+        <ChartContainer config={chartConfig} className="h-60 w-full">
           <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="question" tick={{ fontSize: 12 }} />
