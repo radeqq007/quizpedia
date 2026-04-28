@@ -1,16 +1,12 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SearchBar } from "@/components/SearchBar";
-import { SummaryContent } from "@/components/SummaryContent";
-import { Button } from "@/components/ui/button";
-import { Spinner } from "@/components/ui/spinner";
+import { Summary } from "@/components/Summary";
 import { useExpandSummary } from "@/hooks/useExpandSummary";
 import { useQuiz } from "@/hooks/useQuiz";
 import { useQuizStore } from "@/hooks/useQuizStore";
 import { useWikipediaArticle } from "@/hooks/useWikipedia";
-import { cn } from "@/lib/utils";
 import type { Language } from "@/types";
 
 export const Home = () => {
@@ -83,48 +79,22 @@ export const Home = () => {
         onSelect={setSelected}
       />
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={selected ? "box" : "empty"}
-          initial={{ opacity: 0, y: 5 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
-          layout
-          className={cn(
-            "border border-input bg-transparent rounded-md px-6 py-4 w-full min-h-40 flex flex-col justify-between gap-3",
-            !selected && "hidden",
-          )}
-        >
-          <h2 className="text-2xl font-bold">Summary</h2>
-
-          <SummaryContent
-            isGenerating={isGenerating}
-            isFetching={isFetching}
-            error={quizError}
-            summary={quizData?.summary}
-          />
-
-          <span className="w-full flex gap-2 justify-end mt-5">
-            <Button
-              variant="secondary"
-              disabled={!quizData || isExpanded || isExpanding}
-              onClick={handleExpand}
-            >
-              {expandError ? "Error." : isExpanding ? <Spinner /> : "Expand"}
-            </Button>
-            <Button
-              disabled={!quizData}
-              onClick={() => {
-                if (!quizData) return;
-                setQuiz(quizData);
-                navigate("/quiz");
-              }}
-            >
-              Start
-            </Button>
-          </span>
-        </motion.div>
-      </AnimatePresence>
+      <Summary
+        selected={selected}
+        quizData={quizData}
+        quizError={quizError}
+        isGenerating={isGenerating}
+        isFetching={isFetching}
+        isExpanded={isExpanded}
+        isExpanding={isExpanding}
+        expandError={expandError}
+        onExpand={handleExpand}
+        onStart={() => {
+          if (!quizData) return;
+          setQuiz(quizData);
+          navigate("/quiz");
+        }}
+      />
     </div>
   );
 };
