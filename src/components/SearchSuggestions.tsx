@@ -21,17 +21,13 @@ export const SearchSuggestions = ({
   const [suggestions, setSuggestions] = useState<string[]>([]);
 
   useEffect(() => {
-    const uniqueSuggestions = new Set<string>();
+    const suggestions = [...exampleTopics[lang]]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 4);
 
-    while (uniqueSuggestions.size < 4) {
-      const randomIndex = Math.floor(
-        Math.random() * exampleTopics[lang].length,
-      );
-      uniqueSuggestions.add(exampleTopics[lang][randomIndex]);
-    }
-
-    setSuggestions(Array.from(uniqueSuggestions));
+    setSuggestions(suggestions);
   }, [lang]);
+
   return (
     <div className="absolute top-full left-0 right-0 flex justify-center gap-2 pt-2">
       <AnimatePresence mode="wait">
