@@ -1,5 +1,5 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { fetchWikiArticle, useWikipediaSearch } from "@/hooks/useWikipedia";
 import type { Language } from "@/types";
 
@@ -50,12 +50,27 @@ export const useSearchBar = (
     setSearchOpen(false);
   };
 
+  const hoverTimeout = useRef<number | null>(null);
+
   const handleHover = (title: string) => {
-    queryClient.prefetchQuery({
-      queryKey: ["wikiArticle", title],
-      queryFn: () => fetchWikiArticle(title, lang),
-      staleTime: 1000 * 60 * 5,
-    });
+    if (hoverTimeout.current) {
+      clearTimeout(hoverTimeout.current);
+    }
+
+    hoverTimeout.current = setTimeout(() => {
+      queryClient.prefetchQuery({
+        queryKey: ["wikiArticle", title],
+        queryFn: () => fetchWikiArticle(title, lang),
+        staleTime: 1000 * 60 * 5,
+      });
+    }, 200);
+  };
+
+  const handleHoverLeave = () => {
+    if (!hoverTimeout.current) return;
+
+    clearTimeout(hoverTimeout.current);
+    hoverTimeout.current = null;
   };
 
   return {
@@ -67,5 +82,6 @@ export const useSearchBar = (
     setSearchOpen,
     handleSelect,
     handleHover,
+    handleHoverLeave,
   };
 };

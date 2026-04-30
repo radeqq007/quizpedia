@@ -50,6 +50,7 @@ export const SearchBar = ({
     setSearchOpen,
     handleSelect,
     handleHover,
+    handleHoverLeave,
   } = useSearchBar(onSelect, selected, lang);
 
   const [placeholder, setPlaceholder] = useState("");
@@ -137,6 +138,7 @@ export const SearchBar = ({
                         key={result}
                         onClick={() => handleSelect(result)}
                         onMouseEnter={() => handleHover(result)}
+                        onMouseLeave={handleHoverLeave}
                       >
                         {result}
                       </button>
