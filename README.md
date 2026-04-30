@@ -16,6 +16,7 @@ Quiz generation is powered by the `Llama 3.1 instant` LLM model. Backend code is
 > Quizzes in English are the most accurate.
 
 ## Tech Stack
+- Vite
 - React
 - Typescript
 - Tailwind CSS
