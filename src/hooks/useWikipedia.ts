@@ -15,6 +15,7 @@ export function useWikipediaArticle(title: string, lang: Language) {
     queryKey: ["wikiArticle", title],
     queryFn: () => fetchWikiArticle(title, lang),
     enabled: !!title,
+    staleTime: 1000 * 60 * 5,
   });
 }
 
@@ -40,7 +41,7 @@ const fetchWikiSearch = async (query: string, lang: Language) => {
   return res.json();
 };
 
-const fetchWikiArticle = async (
+export const fetchWikiArticle = async (
   title: string,
   lang: Language,
 ): Promise<Article> => {

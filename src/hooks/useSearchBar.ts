@@ -1,5 +1,6 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { useWikipediaSearch } from "@/hooks/useWikipedia";
+import { fetchWikiArticle, useWikipediaSearch } from "@/hooks/useWikipedia";
 import type { Language } from "@/types";
 
 export const useSearchBar = (
@@ -7,6 +8,7 @@ export const useSearchBar = (
   selected: string,
   lang: Language,
 ) => {
+  const queryClient = useQueryClient();
   const [input, setInput] = useState<string>("");
   const [query, setQuery] = useState<string>("");
   const [searchOpen, setSearchOpen] = useState<boolean>(false);
@@ -48,6 +50,14 @@ export const useSearchBar = (
     setSearchOpen(false);
   };
 
+  const handleHover = (title: string) => {
+    queryClient.prefetchQuery({
+      queryKey: ["wikiArticle", title],
+      queryFn: () => fetchWikiArticle(title, lang),
+      staleTime: 1000 * 60 * 5,
+    });
+  };
+
   return {
     input,
     setInput,
@@ -56,5 +66,6 @@ export const useSearchBar = (
     searchOpen,
     setSearchOpen,
     handleSelect,
+    handleHover,
   };
 };

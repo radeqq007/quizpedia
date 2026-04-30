@@ -49,6 +49,7 @@ export const SearchBar = ({
     searchOpen,
     setSearchOpen,
     handleSelect,
+    handleHover,
   } = useSearchBar(onSelect, selected, lang);
 
   const [placeholder, setPlaceholder] = useState("");
@@ -135,6 +136,7 @@ export const SearchBar = ({
                         className="my-1 cursor-pointer hover:bg-input h-8 px-3 rounded-lg text-left transition-colors"
                         key={result}
                         onClick={() => handleSelect(result)}
+                        onMouseEnter={() => handleHover(result)}
                       >
                         {result}
                       </button>
