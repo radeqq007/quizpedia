@@ -13,7 +13,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="flex flex-col justify-between items-center gap-10 h-screen max-w-screen">
+    <div className="flex flex-col justify-between items-center gap-10 h-screen max-w-screen overflow-auto nice-scrollbar">
       <Header />
 
       <AnimatePresence mode="wait">
