@@ -19,5 +19,17 @@ export const SummaryContent = ({
   if (error)
     return <p className="text-primary">Internal server error. Try again.</p>;
 
-  return <span>{summary}</span>;
+  return (
+    <div
+      className="h-full pt-1 pb-4 overflow-y-auto leading-relaxed nice-scrollbar"
+      style={{
+        maskImage:
+          "linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)",
+        WebkitMaskImage:
+          "linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)",
+      }}
+    >
+      {summary}
+    </div>
+  );
 };

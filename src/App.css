@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@plugin "tailwind-scrollbar";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -187,5 +189,9 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .nice-scrollbar {
+    @apply scrollbar-thin scrollbar-thumb-neutral-300/30 scrollbar-track-transparent;
   }
 }

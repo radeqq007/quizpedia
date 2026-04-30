@@ -37,7 +37,7 @@ export const Summary = ({
         transition={{ duration: 0.2 }}
         layout
         className={cn(
-          "border border-input bg-transparent rounded-md px-6 py-4 w-full min-h-40 flex flex-col justify-between gap-3",
+          "relative border border-input bg-transparent rounded-md w-full min-h-40 max-h-110 flex flex-col justify-between px-6 py-4 gap-1",
           !selected && "hidden",
         )}
       >
@@ -50,7 +50,7 @@ export const Summary = ({
           summary={quiz.data?.summary}
         />
 
-        <span className="w-full flex gap-2 justify-end mt-5">
+        <span className="w-full flex gap-2 justify-end">
           <Button
             variant="secondary"
             disabled={!quiz.data || expansion.isExpanded || expansion.isPending}
