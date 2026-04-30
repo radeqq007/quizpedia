@@ -1,6 +1,6 @@
 import { LucideSearch } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import en from "@/assets/en.svg";
 import pl from "@/assets/pl.svg";
 import { SearchSuggestions } from "@/components/search/SearchSuggestions";
@@ -51,9 +51,11 @@ export const SearchBar = ({
     handleSelect,
   } = useSearchBar(onSelect, selected, lang);
 
-  const placeholder = useMemo(() => {
+  const [placeholder, setPlaceholder] = useState("");
+
+  useEffect(() => {
     const arr = exampleTopics[lang];
-    return `${arr[Math.floor(Math.random() * arr.length)]}...`;
+    setPlaceholder(`${arr[Math.floor(Math.random() * arr.length)]}...`);
   }, [lang]);
 
   return (
