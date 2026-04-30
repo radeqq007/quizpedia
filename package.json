@@ -16,7 +16,7 @@
   "author": "Radosław Kaczmarczyk",
   "license": "MIT",
   "lint-staged": {
-    "*.{js,ts,jsx,tsx,json,css,md}": [
+    "*.{js,ts,jsx,tsx,json,css}": [
       "biome check --write"
     ]
   },
