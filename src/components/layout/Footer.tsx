@@ -18,7 +18,7 @@ export const Footer = () => {
         </span>
       </span>
 
-      <span>
+      <span className="w-full flex justify-center !gap-4 sm:justify-end">
         <Link to="/privacy" className="underline">
           Privacy Policy
         </Link>
