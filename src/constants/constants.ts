@@ -2,10 +2,10 @@ import type { Language } from "@/types";
 
 export const exampleTopics: Record<Language, string[]> = {
   en: [
-    "Ducks",
+    "Duck",
     "Radiohead",
     "The Smashing Pumpkins",
-    "Cats",
+    "Cat",
     "Edam cheese",
     "Earth",
     "Van Halen",
